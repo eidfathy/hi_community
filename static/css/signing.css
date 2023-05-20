@@ -1,0 +1,235 @@
+@import 'primary.css';
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-color);
+  height: 100vh;
+}
+
+.container {
+  position: relative;
+  padding: 0 1em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s linear;
+  width: 100%;
+  height: 100%;
+}
+
+.container .image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.container .image img {
+  max-height: 95vh;
+}
+
+.container hr {
+  overflow: visible;
+  /* Gradient transparent - color - transparent */
+  width: 100%;
+  border: 0;
+  height: 1px;
+  background-image: var(--gradient);
+  text-align: center;
+}
+
+.container hr::after {
+  content: "or connect with";
+  display: inline-block;
+  position: relative;
+  top: -0.85em;
+  color: var(--text-color);
+  background: var(--bg-color);
+  padding: 0 0.5em;
+}
+
+.container .form-container {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  width: 60%;
+  padding: 0 5vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+
+.container .form-container .sign-up {
+  font-size: 1.3em;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  transform: scale(0.8);
+  position: absolute;
+  right: 1%;
+  top: 5%;
+  color: var(--text-color);
+}
+
+.container .form-container .sign-up .register {
+  color: #028afb;
+  font-weight: 600;
+}
+
+.container .form-container .title {
+  margin-bottom: 1em;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  text-align: center;
+}
+
+.container .form-container .title h1 {
+  font-size: 3vw;
+  font-weight: 700;
+  background: linear-gradient(90deg, rgb(0, 83, 181), rgb(2, 141, 255));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.container .form-container .title h2 {
+  color: var(--text-color);
+  font-weight: 400;
+}
+
+.container .form-container form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: inherit;
+}
+
+.container .form-container form .input {
+  font-size: 1.3em;
+  padding: 15px 20px;
+  margin-bottom: 1em;
+  border-radius: 15px;
+  background-color: var(--input-bg);
+  border: 2px solid black;
+  color: #0360c4;
+}
+
+.container .form-container form .input::-webkit-calendar-picker-indicator {
+  filter: var(--invert);
+}
+
+.container .form-container form .input:focus {
+  outline-color: #048afb;
+}
+
+.container .form-container form .input:focus::-moz-placeholder {
+  color: #0360c4;
+}
+
+.container .form-container form .input:focus::placeholder {
+  color: #0360c4;
+}
+
+.container .form-container form .drop {
+  width: 100%;
+}
+
+.container .form-container form .btn {
+  margin: 2em 0;
+  padding: 15px 25px;
+}
+
+.container .form-container form .text-area {
+  width: 100%;
+  border-radius: 20px;
+  font-size: 1.2em;
+}
+
+.container .form-container form .tags {
+  width: 100%;
+  font-size: 1em;
+  --tag-bg: #038afb;
+  --tag-text-color: white;
+  --tag-border-radius: 50px;
+  --tag-inset-shadow-size: 5em;
+  --tag-hover: rgb(25, 135, 84);
+  --tag-remove-bg: rgb(220, 53, 69);
+  --tag-remove-btn-color: white;
+  --placeholder-color: #0360c4;
+}
+
+.container .form-container input,
+.container .form-container button {
+  width: 100%;
+}
+
+.container .form-container .social-container {
+  display: flex;
+  gap: 2em;
+}
+
+.container .form-container .social-container img {
+  cursor: pointer;
+}
+
+.container .choices {
+  width: 100%;
+  gap: 1em;
+}
+
+.container .choices .btn-cta-choice {
+  cursor: pointer;
+  font-size: 1.5em;
+  padding: 0.6em;
+  border-radius: 15px;
+  background-color: var(--input-bg);
+  border: none;
+  transition: 50ms ease-in;
+}
+
+.container .choices .btn-cta-choice:hover {
+  color: #0360c4;
+  outline: #0360c4 2px solid;
+}
+
+.reverse {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s linear;
+}
+
+.intersts_wrapper {
+  color: black;
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: #eee;
+  padding: 15px 25px;
+  width: 100%;
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  font-size: 22px;
+  height: 120px;
+  text-align: start;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.intersts_wrapper .interst {
+  border: 1px solid black;
+  height: fit-content;
+  padding: 2px 20px;
+  border-radius: 50px;
+  font-size: 14px;
+}
+
+/*# sourceMappingURL=signing.css.map */

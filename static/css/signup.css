@@ -1,0 +1,115 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+.signup,
+.signupPlace {
+    height: 100vh;
+    text-align: center;
+}
+
+.signup .select {
+    height: fit-content;
+}
+
+.signup h1,
+.signupPlace h1 {
+    background: -webkit-linear-gradient(45deg, rgba(3, 92, 192, 1) 25%, rgba(0, 212, 255, 1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 72px;
+    padding: 5px 0;
+
+}
+
+.signupPlace h1 {
+    font-size: 48px;
+}
+
+.signup p,
+.signupPlace p {
+    font-size: 35px;
+}
+
+.signup a,
+.signupPlace input,
+.signupPlace select,
+.signupPlace textarea {
+    color: black;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: #eee;
+    text-decoration: none;
+    padding: 15px 25px;
+    width: 100%;
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 22px;
+    resize: none;
+}
+
+.signup .img,
+.signupPlace .img {
+    padding: 25px;
+}
+
+.signup img,
+.signupPlace img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    text-align: end;
+}
+
+.signupPlace button {
+    color: white;
+    border-radius: 10px;
+    background: linear-gradient(45deg, #0157B9 25%, #038AFB 100%);
+    border: none;
+    text-decoration: none;
+    padding: 15px 25px;
+    width: 100%;
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 22px;
+    margin-top: 50px;
+}
+
+.signupPlace p {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.signUpForm.step2 .interst_wrapper {
+    color: black;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: #eee;
+    padding: 15px 25px;
+    width: 100%;
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 22px;
+    height: 120px;
+    text-align: start;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.signUpForm.step2 .interst_wrapper .interst {
+    border: 1px solid black;
+    height: fit-content;
+    padding: 2px 20px;
+    border-radius: 50px;
+    font-size: 14px;
+}

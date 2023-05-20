@@ -1,0 +1,931 @@
+@font-face {
+    font-family: Cairo;
+    src: url(../fonts/Cairo-VariableFont_slnt\,wght.ttf);
+}
+
+* {
+    padding: 0;
+    margin: 0%;
+    box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgba(3, 132, 244, 1);
+    border-radius: 10px;
+}
+
+ul {
+    list-style: none;
+    padding: 0%;
+    margin: 0%;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    color: inherit;
+}
+
+.img-fluid {
+    width: 100%;
+}
+
+body {
+    font-family: Cairo;
+    background-color: #F0F2F5;
+}
+
+/* start left side  */
+
+nav.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #F0F2F5;
+    z-index: 999;
+}
+
+nav.navbar .container-fluid {
+    display: unset;
+}
+
+
+.navbar .special.col-md-2 {
+    width: 120px;
+    transition: 0.3s;
+}
+
+/* .navbar .special.col-md-2 {
+    width: calc(100%/12 *2);
+} */
+
+nav .search input {
+    background-color: #eee;
+    width: 100%;
+    transition: 0.3s;
+}
+
+nav .profile-info ul li {
+    position: relative;
+    width: 25px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+nav .profile-info>ul>.notifi .img img {
+    width: 25px;
+}
+
+nav .profile-info>ul>.notifi .img {
+    width: 25px;
+    overflow: hidden;
+    transition: 0.3s;
+    color: rgba(3, 132, 244, 1);
+
+}
+
+nav .profile-info>ul>li.active .img {
+    width: 140px;
+    background-color: #eee;
+    border-radius: 10px;
+    padding: 4px 12px;
+}
+
+nav .profile-info ul li.notifi .num {
+    position: absolute;
+    left: -5px;
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    top: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+nav .profile-info ul li.notifi.active {
+    width: 140px;
+}
+
+nav .profile-info ul .notifi_wrapper {
+    position: absolute;
+    background: white;
+    width: 300px;
+    height: 0px;
+    left: -50px;
+    top: 80px;
+    border-radius: 10px;
+    padding: 10px;
+    overflow: auto;
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+    box-shadow: #00000052 0px 0px 10px
+}
+
+nav .profile-info ul .notifi_wrapper .setting a {
+    color: rgba(3, 132, 244, 1);
+
+}
+
+nav .profile-info ul li.notifi.active+.notifi_wrapper {
+    height: 400px;
+    opacity: 1;
+    visibility: visible;
+}
+
+nav .profile-info ul .notifi_wrapper .notifiBox {
+    background-color: #eee;
+    padding: 5px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+
+nav .profile-info ul .notifi_wrapper .notifiBox .img {
+    width: 50px;
+}
+
+nav .profile-info ul .notifi_wrapper .notifiBox .info {
+    width: calc(100% - 66px);
+}
+
+nav .profile-info ul .notifi_wrapper .notifiBox .info h4 {
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+
+}
+
+nav .profile-info ul .notifi_wrapper .notifiBox .info p {
+    font-size: 12px;
+    margin: 0;
+}
+
+.home {
+    height: calc(100vh - 127px);
+    padding-top: 127px !important;
+}
+
+
+.home .special.col-md-2 {
+    width: 120px;
+    transition: 0.3s;
+}
+
+.home .special.col-md-2:hover {
+    width: calc(100%/12 *2);
+}
+
+.home .leftSide {
+    position: sticky;
+    top: 127px;
+}
+
+.home .leftSide .head {
+    position: relative;
+    display: flex;
+    justify-content: end;
+}
+
+.home .leftSide .head h3 {
+    font-weight: bolder;
+    font-size: 16px;
+    position: absolute;
+    left: 0;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.3s;
+    white-space: nowrap;
+    background: -webkit-linear-gradient(270deg, rgba(3, 92, 192, 1) 0%, rgba(3, 132, 244, 1) 100%, rgba(0, 212, 255, 1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.home .leftSide .head img {
+    position: relative;
+    transition: 0.3s;
+    padding: 10px;
+}
+
+.home .special.col-md-2:hover .leftSide .head h3 {
+    opacity: 1;
+    visibility: visible;
+}
+
+.home .special.col-md-2:hover .leftSide .head img {
+    transform: rotateY(180deg);
+
+}
+
+.home .leftSide {
+    height: calc(100vh - 170px);
+}
+
+.home .leftSide ul .leftSideOption {
+    position: relative;
+    padding: 10px;
+    border-radius: 5px;
+    transition: 0.3s;
+    overflow: hidden;
+    z-index: 1;
+    display: flex;
+    gap: 18px;
+    color: white;
+}
+
+.home .leftSide ul .leftSideOption span {
+    /* opacity: 0;
+    transition: 0.3s; */
+    color: #919397;
+}
+
+.home .special.col-md-2:hover ul .leftSideOption span {
+    opacity: 1;
+}
+
+.home .leftSide ul .leftSideOption::before {
+    position: absolute;
+    content: "";
+    inset: 0;
+    background: linear-gradient(90deg, rgba(3, 92, 192, 1) 0%, rgba(3, 132, 244, 1) 100%, rgba(0, 212, 255, 1) 100%);
+    transition: 0.3s;
+    opacity: 0;
+    z-index: -1;
+    transition: 0.3s;
+}
+
+.home .leftSide ul .leftSideOption:hover::before,
+.home .leftSide ul .leftSideOption.active::before {
+    opacity: 1;
+
+}
+
+.home .leftSide ul {
+    height: calc(100% - 50px);
+}
+
+.home .leftSide ul .leftSideOption:hover span,
+.home .leftSide ul .leftSideOption.active span {
+    color: white;
+}
+
+.home .leftSide ul .leftSideOptions img {
+    position: relative;
+    z-index: 3;
+}
+
+.home .leftSide ul li.active,
+.home .leftSide ul li:hover {
+    color: white;
+}
+
+/* start create post  */
+
+.middle .createPost .head .img {
+    width: 56px;
+}
+
+
+.middle .createPost .head input {
+    background-color: #F0F2F5;
+    border: none;
+
+}
+
+.middle .createPost .media {
+    padding-top: 15px;
+    border-top: 4px solid #F0F2F5;
+    margin-top: 20px;
+}
+
+.middle .createPost .media ul {
+    display: flex;
+    gap: 20px;
+}
+
+.middle .createPost .media ul li {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.middle .createPost .media ul li .img {
+    cursor: pointer;
+}
+
+.middle .createPost .media ul li img {
+    width: 18px;
+}
+
+.middle .createPost .media ul li input[type="file"] {
+    position: absolute;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    cursor: pointer;
+
+}
+
+.middle .createPost .media ul li input[type="file"]>input {
+    cursor: pointer
+}
+
+/* start post-wrapper  */
+
+.posts_wrapper .post {
+    padding: 20px;
+}
+
+.posts_wrapper .post .headPost .options,
+.introduction .introHead .options,
+.intersts .interstHead .options,
+.members .memberHead .options {
+    position: relative;
+}
+
+.posts_wrapper .post .headPost .options i,
+.introduction .introHead .options i,
+.intersts .interstHead .options i,
+.members .memberHead .options i {
+
+    color: #919397;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.posts_wrapper .post .headPost .options .menu,
+.middle .about .aboutHead .menu,
+.introduction .introHead .options .menu,
+.intersts .interstHead .options .menu,
+.members .memberHead .options .menu {
+    background: white;
+    box-shadow: #00000052 0px 0px 10px;
+    position: absolute;
+    left: 0;
+    width: 0px;
+    height: 0px;
+    padding: 10px 0;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.posts_wrapper .post .headPost .options .menu.active,
+.middle .about .aboutHead .menu.active,
+.introduction .introHead .options .menu.active,
+.intersts .interstHead .options .menu.active,
+.members .memberHead .options .menu.active {
+    width: 150px;
+    height: 85px;
+}
+
+.posts_wrapper .post .headPost .options .menu button,
+.middle .about .aboutHead .menu button,
+.introduction .introHead .options .menu button,
+.intersts .interstHead .options .menu button,
+.members .memberHead .options .menu button {
+    width: 100%;
+    text-align: start;
+    border: none;
+    background-color: transparent;
+    transition: 0.2s;
+    padding: 5px 15px;
+    font-size: 14px;
+    width: 150px;
+}
+
+.posts_wrapper .post .headPost .options .menu button:hover,
+.middle .about .aboutHead .menu button:hover,
+.introduction .introHead .options .menu button:hover,
+.intersts .interstHead .options .menu button:hover,
+.members .memberHead .options .menu button:hover {
+    background-color: black;
+    color: white;
+}
+
+.posts_wrapper .post .headPost .info {
+    gap: 20px;
+}
+
+.posts_wrapper .post .headPost .info .img {
+    width: 50px
+}
+
+.posts_wrapper .post .headPost .info h2 {
+    font-size: 20px;
+    margin-bottom: 0px;
+}
+
+.posts_wrapper .post .headPost .info h2 span,
+.posts_wrapper .post .headPost .info p {
+    font-size: 16px;
+    color: #919397;
+}
+
+.posts_wrapper .post .captionPost {
+    font-size: 18px;
+    font-weight: 600;
+
+}
+
+.posts_wrapper .post .mediaPost img {
+    border-radius: 10px;
+}
+
+.posts_wrapper .post .actionPost ul li,
+.posts_wrapper .post .actionPost .save {
+    cursor: pointer;
+}
+
+.posts_wrapper .post .actionPost .love.active {
+    color: red;
+}
+
+.posts_wrapper .post .actionPost .comment.active {
+    color: blue;
+}
+
+.posts_wrapper .post .actionPost .save.active {
+    color: goldenrod;
+}
+
+.posts_wrapper .post .commentSection {
+    height: 0;
+    overflow: hidden;
+    border-top: 1px solid black;
+    transition: 0.3s;
+}
+
+.posts_wrapper .post .commentSection.active {
+    height: 600px;
+    padding: 20px 0;
+}
+
+.posts_wrapper .post .commentSection .commentSort select {
+    padding: 5px 10px;
+    border: none;
+    outline: none;
+}
+
+
+.posts_wrapper .post .commentPost_wrapper {
+    height: 450px;
+    overflow: auto;
+}
+
+.posts_wrapper .post .commentPost_wrapper .comment .commentDetails {
+    background-color: #eee;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.posts_wrapper .post .commentPost_wrapper .comment .commentDetails .commentIMG {
+    width: 50px;
+}
+
+.posts_wrapper .post .commentPost_wrapper .comment .commentDetails .commentInfo h3 {
+    font-size: 18px;
+}
+
+.posts_wrapper .post .commentPost_wrapper .comment .commentDetails .commentInfo p {
+    font-size: 14px;
+}
+
+.posts_wrapper .post .commentPost_wrapper .comment .commentReaction {
+    margin: 5px 70px;
+}
+
+.posts_wrapper .post .commentSection .form input {
+    background-color: transparent;
+    border: none;
+    margin-left: 10px;
+}
+
+.posts_wrapper .post .commentSection .form input:focus {
+    outline: none;
+}
+
+.posts_wrapper .post .commentSection .form .img {
+    width: 50px;
+}
+
+.posts_wrapper .post .commentSection .form .addComment {
+    background-color: #eee;
+    padding: 10px;
+    border-radius: 50px;
+    position: relative;
+}
+
+.posts_wrapper .post .commentSection .form .actions button {
+    background: linear-gradient(90deg, rgba(3, 92, 192, 1) 0%, rgba(3, 132, 244, 1) 100%, rgba(0, 212, 255, 1) 100%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: white;
+    border: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.posts_wrapper .post .commentSection .form input+.actions>i {
+    transition: 0.3s;
+}
+
+.posts_wrapper .post .commentSection .form input:focus+.actions>i {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.posts_wrapper .post .commentSection .form input:focus+.actions button {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* end post-wrapper  */
+
+.home .chat ul {
+    border-bottom: 4px solid #919397;
+}
+
+.home .chat ul li {
+    position: relative;
+    /* background: -webkit-linear-gradient(270deg, rgba(3, 92, 192, 1) 0%, rgba(3, 132, 244, 1) 100%, rgba(0, 212, 255, 1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; */
+    padding-bottom: 5px;
+    font-weight: 700;
+    transition: 0.3s;
+    color: #919397;
+    cursor: pointer;
+}
+
+.home .chat ul li.active,
+.home .chat ul li:hover {
+    color: rgba(3, 132, 244, 1);
+
+}
+
+.home .chat ul li::before {
+    position: absolute;
+    content: "";
+    border-bottom: 4px solid rgba(3, 132, 244, 1);
+    width: 0%;
+    z-index: 2;
+    bottom: -4px;
+    left: 0;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.home .chat ul li:hover::before,
+.home .chat ul li.active::before {
+    opacity: 1;
+    width: 105%;
+}
+
+.home .chat ul a {
+    color: rgba(3, 132, 244, 1);
+}
+
+.home .chat .friend_wrapper {
+    height: 250px;
+    overflow: auto;
+}
+
+.home .chat .friend_wrapper .friend {
+    background-color: #eee;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.home .chat .friend_wrapper .friend .img {
+    width: 60px
+}
+
+.home .chat .friend_wrapper .friend .info h4 {
+    padding: 0;
+    margin: 0;
+    position: relative;
+    padding-right: 15px;
+    font-size: 18px;
+    width: fit-content;
+}
+
+.home .chat .friend_wrapper .friend .info h4 .online,
+.home .chat .friend_wrapper .friend .info h4 .offline {
+    position: absolute;
+    right: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+
+}
+
+.home .chat .friend_wrapper .friend .info h4 .online {
+
+    background-color: #1DD93B;
+}
+
+.home .chat .friend_wrapper .friend .info h4 .offline {
+
+    background-color: red;
+}
+
+.home .chat .friend_wrapper .friend .info p {
+    white-space: nowrap;
+    margin: 0;
+    font-size: 12px;
+    color: #919397;
+    width: 110px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.home .rightSide {
+    position: sticky;
+    top: 127px;
+    height: calc(100vh - 127px);
+    overflow: auto;
+    padding-bottom: 30px;
+}
+
+.home .rightSide::-webkit-scrollbar-thumb {
+    background-color: transparent;
+}
+
+.myCommunity_wrapper {
+    height: 365px;
+    overflow: auto;
+}
+
+.myCommunity_wrapper .community {
+    background-color: #eee;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+
+
+.myCommunity_wrapper .community .img {
+    width: 60px;
+}
+
+.profile .container-fluid>.row {
+    gap: 265px;
+}
+
+.profileUser .details .img {
+    height: 60px;
+    width: 158px;
+    position: relative;
+}
+
+.profileUser .details .img img {
+    position: absolute;
+    bottom: 0;
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    z-index: 2;
+    margin-left: 5px;
+}
+
+
+.profileUser .details .img::before {
+    position: absolute;
+    content: "";
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(90deg, rgba(3, 92, 192, 1) 0%, rgba(3, 132, 244, 1) 100%, rgba(0, 212, 255, 1) 100%);
+    z-index: 41;
+    top: -85px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.profileUser .details .name h2 {
+    margin: 0;
+}
+
+.profileUser .details .name p {
+    font-weight: 500;
+}
+
+
+.profileUser .buttons button {
+    background-color: #16314E;
+    color: white;
+    border: none;
+    padding: 4px 10px;
+    border-radius: 5px;
+}
+
+.profileUser .buttons button.edit {
+    padding: 4px 20px;
+    background: linear-gradient(90deg, rgba(3, 92, 192, 1) 0%, rgba(3, 132, 244, 1) 100%, rgba(0, 212, 255, 1) 100%);
+
+}
+
+.middle .about {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+
+.middle .about .aboutHead .options {
+    position: relative;
+}
+
+.middle .about .aboutHead h2,
+.intersts .interstHead h2,
+.members .memberHead h2 {
+    font-size: 16px;
+    color: #919397;
+}
+
+.middle .about .aboutHead .options i {
+    color: #919397;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.middle .about .aboutHead .menu {
+    position: absolute;
+
+}
+
+.introduction,
+.intersts,
+.members {
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.introduction .introHead h2 {
+    font-size: 16px;
+    color: #919397;
+}
+
+
+.introduction ul li {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.introduction ul li i {
+    font-size: 15px;
+    width: 15px;
+}
+
+.intersts .interst_wrapper .interst {
+    padding: 0px 15px;
+    border: 1px solid black;
+    border-radius: 50px;
+    font-size: 14px;
+    transition: 0.3s;
+    cursor: unset;
+}
+
+.intersts .interst_wrapper .interst:hover.yellow {
+    background-color: #FFB61D;
+    color: white;
+    border-color: #FFB61D;
+}
+
+.intersts .interst_wrapper .interst:hover.mov {
+    background-color: #4147D5;
+    border-color: #4147D5;
+    color: white;
+}
+
+.intersts .interst_wrapper .interst:hover.red {
+    background-color: #F05D6C;
+    border-color: #F05D6C;
+    color: white;
+}
+
+.intersts .interst_wrapper .interst:hover.green {
+    background-color: #10A916;
+    border-color: #10A916;
+    color: white;
+}
+
+nav .search.profile {
+    transform: translateX(calc(100vw / 12 * 1));
+}
+
+.members .members_wrapper .member {
+    width: 75px;
+    text-align: center;
+}
+
+.members .members_wrapper .member h2 {
+    font-size: 14px;
+}
+
+.members .members_wrapper .more {
+    background-color: #F8F8F8;
+    width: 75px;
+    height: 75px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.community .communityInfo .info .img {
+    position: relative;
+}
+
+.community .communityInfo .info .img img {
+    position: relative;
+
+}
+
+.community .communityInfo .info .img::before {
+    position: absolute;
+    content: "";
+    width: calc(100%);
+    height: calc(100% + 5px);
+
+    background: linear-gradient(90deg, rgba(3, 92, 192, 1) 0%, rgba(3, 132, 244, 1) 100%, rgba(0, 212, 255, 1) 100%);
+    border-radius: 50%;
+    left: 0px;
+    top: -5px;
+    z-index: 0;
+}
+
+.community .communityInfo button {
+    background-color: #16314E;
+    color: white;
+    border: none;
+    padding: 4px 10px;
+    border-radius: 5px;
+}
+
+.community .communityJoin h3 {
+    color: #919397;
+    font-size: 14px;
+}
+
+.community .communityJoin h4,
+.community .communityJoin h5 {
+    color: black;
+    font-size: 18px;
+}
+
+.community .communityJoin .about,
+.community .communityJoin .rules {
+    background-color: #E9E9E9;
+    padding: 20px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 2px solid black;
+}
+
+.community .communityJoin .rules ul {
+    list-style: disc;
+    margin-left: 30px;
+}
+
+.community .communityJoin .rules ul li {
+    margin: 5px 0;
+}
+
+.community .communityJoin button {
+    width: 100%;
+    color: white;
+    border: none;
+    padding: 15px 0;
+    border-radius: 5px;
+    background: linear-gradient(90deg, rgba(3, 92, 192, 1) 0%, rgba(3, 132, 244, 1) 100%, rgba(0, 212, 255, 1) 100%);
+    box-shadow: #00000052 0px 0px 10px
+}

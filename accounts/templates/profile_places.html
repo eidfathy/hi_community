@@ -1,0 +1,702 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>HI Community</title>
+</head>
+
+<body>
+
+    <nav class="navbar ">
+        <div class="container-fluid bg-white my-2 mx-3 rounded-3 p-3">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-md-2 special">
+                    <div class="nav-brand">
+                        <img src="{% static 'img/HI LOGO 1.png' %}" alt="Logo mi community">
+                    </div>
+                </div>
+                <div class="col-md-5">
+
+                    <div class="search profile">
+                        <input type="search" class="form-control rounded-pill" id="SearchNav" placeholder="search">
+                    </div>
+                </div>
+                <div class="col-md-3">
+
+                    <div class="profile-info d-flex gap-5 justify-content-end align-items-center">
+                        <ul class="d-flex gap-4 align-items-center position-relative">
+                            <li><img src="{% static 'img/Add.png' %}" alt="" class="img-fluid"></li>
+                            <li class="notifi" id="notifi">
+                                <div class="img d-flex align-items-center gap-2">
+                                    <img src="{% static 'img/notifiction.png' %}" alt="" class="img-fluid">
+                                    <h3 class="fs-6 m-0 p-0">Notifictions</h3>
+                                    <span class="num">10</span>
+                                </div>
+                            </li>
+                            <div class="notifi_wrapper">
+                                <div class="setting d-flex justify-content-between mb-3">
+                                    <p class="p-0 m-0">new</p>
+                                    <a href="#">read All</a>
+                                </div>
+                                <div class="notifiBox d-flex gap-3 align-items-center">
+                                    <div class="img"><img src="{% static 'img/Group 2984.png' %}" alt="" class="img-fluid">
+                                    </div>
+                                    <div class="info">
+                                        <h4>Youssif Elhelaly, <span>added 26 new photos</span></h4>
+                                        <p>14 min</p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </ul>
+                        <div class="profileIMG">
+                            <img src="{% static 'img/Group 2984.png' %}" alt="profile photo">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </nav>
+
+    <section class="profile home p-2">
+        <div class="container-fluid">
+            <div class="row flex-nowrap">
+
+                <div class="col-md-2 special" id="special">
+                    <div class="leftSide bg-white  p-4 rounded-3">
+                        <div class="head mb-4">
+                            <h3>Hi Community</h3>
+                            <img src="{% static 'img/arrow-right-svgrepo-com 1.png' %}" alt="menu icon">
+                        </div>
+                        <ul class="d-flex flex-column justify-content-between">
+                            <div class="upper d-flex flex-column gap-4">
+
+                                <li><a class="leftSideOption" href="#"><img src="{% static 'img/homeGray_.png' %}" alt="">
+                                        <span>Home</span></a></li>
+                                <li><a href="#" class="leftSideOption active"><img src="{% static 'img/profileWhite.png' %}"
+                                            alt=""><span>Profile</span></a></li>
+                                <li><a href="#" class="leftSideOption"><img src="{% static 'img/chat.png' %}"
+                                            alt=""><span>Chat</span></a></li>
+                                <li><a href="#" class="leftSideOption"><img src="{% static 'img/community.png' %}"
+                                            alt=""><span>Community</span></a>
+                                </li>
+                                <li><a href="#" class="leftSideOption"><img src="{% static 'img/setting.png' %}"
+                                            alt=""><span>Setting</span></a></li>
+                            </div>
+                            <div class="down">
+                                <li><a href="#" class="leftSideOption"><img src="{% static 'img/logOut.png' %}"
+                                            alt=""><span>logout</span></a>
+                                </li>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="profileUser bg-white rounded-4">
+                        <div class="coverIMG">
+                            <img src="{% static 'img/placeProfileCover.png' %}" alt="cover img" class="img-fluid">
+                        </div>
+                        <div class="UserInfo d-flex justify-content-between align-items-center">
+                            <div class="details d-flex align-items-center">
+                                <div class="img">
+                                    <img src="{% static 'img/ProfilePlaces.png' %}" alt="profile">
+                                </div>
+                                <div class="name">
+                                    <h2>{{user.placesprofile.nameplaces}}</h2> 
+                                    {% if user.placesprofile %}
+                                      <h2>{{ user.placesprofile.nameplaces }}</h2>
+                                    {% else %}
+                                      <p>No Places Profile available</p>
+                                    {% endif %}
+                                    <p>@{{user.username}}</p>
+                                </div>
+                            </div>
+                            <div class="buttons me-3 d-flex gap-3">
+                                <button class="edit">edit info</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="InfoProfile mt-5">
+                        <div class="row justify-content-between">
+                            <div class="col-md-4 ">
+                                <div class="left">
+                                    <div class="introduction bg-white">
+                                        <div class="introHead d-flex justify-content-between">
+                                            <h2>introduction</h2>
+                                            <div class="options">
+                                                <i class="fa-solid fa-ellipsis" id="introOptionBTN"></i>
+                                                <div class="menu" id="introOptionMenu">
+                                                    <ul class="d-flex flex-column gap-1">
+                                                        <li><button>Edit Post</button></li>
+                                                        <li><button>Delete Post</button></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <ul>
+                                            <li>
+                                                <i class="fa-brands fa-facebook"></i>
+                                                <a href="#">www.facebook.com/kfcarabia/</a>
+                                            </li>
+                                            <li>
+                                                <i class="fa-brands fa-instagram"></i>
+                                                <a href="#">www.instagram.com/kfc/</a>
+
+                                            </li>
+                                            <li>
+                                                <i class="fa-solid fa-location-dot"></i>
+                                                cairo
+                                            </li>
+
+                                            <li>
+                                                <i class="fa-solid fa-location-dot"></i>
+                                                cairo
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                    <div class="intersts bg-white mt-4">
+                                        <div class="interstHead d-flex justify-content-between">
+                                            <h2>introduction</h2>
+                                            <div class="options">
+                                                <i class="fa-solid fa-ellipsis" id="insertOptionBTN"></i>
+                                                <div class="menu" id="insertOptionMenu">
+                                                    <ul class="d-flex flex-column gap-1">
+                                                        <li><button>Edit Post</button></li>
+                                                        <li><button>Delete Post</button></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="interst_wrapper d-flex gap-2 flex-wrap">
+                                            <div class="interst red">
+                                                food
+                                            </div>
+                                            <div class="interst green">
+                                                fast food
+                                            </div>
+                                            <div class="interst mov">
+                                                chicken
+                                            </div>
+                                            <div class="interst yellow">
+                                                fries
+                                            </div>
+                                            <div class="interst red">
+                                                KFC
+                                            </div>
+                                            <div class="interst mov">
+                                                React
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="middle">
+                                    <div class="about">
+                                        <div class="aboutHead d-flex justify-content-between">
+                                            <h2>about me</h2>
+                                            <div class="options">
+                                                <i class="fa-solid fa-ellipsis" id="aboutOptionBTN"></i>
+                                                <div class="menu" id="aboutOptionMenu">
+                                                    <ul class="d-flex flex-column gap-1">
+                                                        <li><button>Edit Post</button></li>
+                                                        <li><button>Delete Post</button></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed aliquam
+                                            consequuntur nisi sequi possimus distinctio, assumenda alias totam soluta
+                                            numquam voluptates ea, repellat repudiandae, consectetur ex quisquam
+                                            obcaecati quibusdam sit! Lorem ipsum dolor sit amet consectetur adipisicing
+                                            elit. Aliquam corrupti dicta voluptatem pariatur magnam distinctio fugit
+                                            exercitationem. Ratione totam, aperiam fugit eius molestiae, amet quo
+                                            reprehenderit veniam tempora impedit ad.</p>
+                                    </div>
+                                    <form class="createPost bg-white rounded-3 p-4 mb-3">
+                                        <div class="head d-flex gap-3">
+                                            <div class="img"><img src="{% static 'img/Group 2984.png' %}" alt="user photo"
+                                                    class="img-fluid"></div>
+                                            <input type="text" class="form-control rounded-pill" id="CreatePost"
+                                                placeholder="Some Something">
+
+                                        </div>
+                                        <div class="media">
+                                            <ul>
+                                                <li>
+                                                    <div class="img">
+                                                        <img src="{% static 'img/picture 1.png' %}" alt="photo icon">
+                                                        <span>Image</span>
+                                                    </div>
+                                                    <input type="file">
+                                                </li>
+                                                <li>
+                                                    <div class="img">
+                                                        <img src="{% static 'img/camera 1.png' %}" alt="photo icon">
+                                                        <span>Video</span>
+                                                    </div>
+                                                    <input type="file" style="cursor: pointer">
+                                                </li>
+                                                <li>
+                                                    <div class="img">
+                                                        <img src="{% static 'img/paper.png' %}" alt="photo icon">
+                                                        <span>Attachment</span>
+                                                    </div>
+                                                    <input type="file">
+                                                </li>
+                                                <li>
+                                                    <div class="img">
+                                                        <img src="{% static 'img/LocationPost.png' %}" alt="photo icon">
+                                                        <span>Location</span>
+                                                    </div>
+                                                    <input type="file">
+                                                </li>
+                                                <li>
+                                                    <div class="img">
+                                                        <img src="{% static 'img/communityPost.png' %}" alt="photo icon">
+                                                        <span>Community</span>
+                                                    </div>
+                                                    <input type="file">
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </form>
+                                    <div class="posts_wrapper">
+
+                                        <div class="post bg-white rounded-3 mb-5">
+                                            <div class="headPost d-flex justify-content-between">
+                                                <div class="info d-flex">
+                                                    <div class="img"><img src="{% static 'img/Group 2984.png' %}" alt=""
+                                                            class="img-fluid">
+                                                    </div>
+                                                    <div class="details">
+                                                        <h2>Mohamed Nabeel <span>in community</span></h2>
+                                                        <p>2 hours ago</p>
+                                                    </div>
+                                                </div>
+
+                                                <div class="options">
+                                                    <i class="fa-solid fa-ellipsis" id="PostOptionBTN"></i>
+                                                    <div class="menu" id="postOptionMenu">
+                                                        <ul class="d-flex flex-column gap-1">
+                                                            <li><button>Edit Post</button></li>
+                                                            <li><button>Delete Post</button></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="captionPost">
+                                                <p>Building strong communities is critical to our social and emotional
+                                                    well-being.
+                                                    Whether it is a community centered around a shared interest,</p>
+                                            </div>
+                                            <div class="mediaPost">
+                                                <img src="{% static 'img/MediaPost.png' %}" alt="" class="img-fluid">
+                                            </div>
+                                            <div class="actionPost m-3 d-flex justify-content-between">
+                                                <div class="reaction">
+                                                    <ul class=" d-flex gap-3">
+                                                        <li class="love" id="lovePostParent"><i id="lovePost"
+                                                                class="fa-regular fa-heart"></i>
+                                                            <span>45</span> Love
+                                                        </li>
+                                                        <li class="comment" id="commentPostParent"><i
+                                                                class="fa-regular fa-comment-dots"></i> <span>2</span>
+                                                            comment</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="save" id="savePostParent"><i id="savePost"
+                                                        class="fa-regular fa-bookmark"></i> Save</div>
+                                            </div>
+                                            <div class="commentSection" id="commentSection">
+                                                <div class="commentSort">
+                                                    <select name="sort_Comment" id="">
+                                                        <option value="AllComment">All Comments</option>
+                                                        <option value="MostRecent">Most Recent</option>
+                                                    </select>
+                                                </div>
+                                                <div class="commentPost_wrapper my-2">
+                                                    <div class="comment">
+                                                        <div class="commentDetails d-flex gap-3">
+                                                            <div class="commentIMG">
+                                                                <img src="{% static 'img/Group 2984.png' %}" alt=""
+                                                                    class="img-fluid">
+                                                            </div>
+                                                            <div class="commentInfo">
+                                                                <h3 class="m-0">Fatima mahmoud</h3>
+                                                                <p>Hello my friends in this wonderful community. it was
+                                                                    a very
+                                                                    wonderful
+                                                                    day. ihope to repeat it again</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="commentReaction">
+                                                            <ul class=" d-flex gap-3">
+                                                                <li class="love" id="loveCommentParent"><i id="lovePost"
+                                                                        class="fa-regular fa-heart"></i>
+                                                                    <span>5</span> Love
+                                                                </li>
+                                                                <li class="reply" id="replyCommentParent"><i
+                                                                        class="fa-regular fa-comment-dots"></i>
+                                                                    <span>2</span>
+                                                                    reply
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="form d-flex align-items-center gap-3">
+                                                    <div class="img"><img src="{% static 'img/Group 2984.png' %}" alt=""
+                                                            class="img-fluid">
+                                                    </div>
+                                                    <div class="addComment flex-grow-1 d-flex align-items-center">
+                                                        <input type="text" class="flex-grow-1"
+                                                            placeholder="What's in your mind?">
+                                                        <div class="actions d-flex gap-2">
+                                                            <i class="fa-regular fa-image"></i>
+                                                            <i class="fa-solid fa-camera"></i>
+                                                            <i class="fa-solid fa-paperclip"></i>
+                                                            <i class="fa-regular fa-face-grin"></i>
+                                                            <button><i class="fa-regular fa-paper-plane"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="post bg-white rounded-3 mb-5">
+                                            <div class="headPost d-flex justify-content-between">
+                                                <div class="info d-flex">
+                                                    <div class="img"><img src="{% static 'img/Group 2984.png' %}" alt=""
+                                                            class="img-fluid">
+                                                    </div>
+                                                    <div class="details">
+                                                        <h2>Mohamed Nabeel <span>in community</span></h2>
+                                                        <p>2 hours ago</p>
+                                                    </div>
+                                                </div>
+
+                                                <div class="options">
+                                                    <i class="fa-solid fa-ellipsis" id="PostOptionBTN"></i>
+                                                    <div class="menu" id="postOptionMenu">
+                                                        <ul class="d-flex flex-column gap-1">
+                                                            <li><button>Edit Post</button></li>
+                                                            <li><button>Delete Post</button></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="captionPost">
+                                                <p>Building strong communities is critical to our social and emotional
+                                                    well-being.
+                                                    Whether it is a community centered around a shared interest,</p>
+                                            </div>
+                                            <div class="mediaPost">
+                                                <img src="{% static 'img/MediaPost.png' %}" alt="" class="img-fluid">
+                                            </div>
+                                            <div class="actionPost m-3 d-flex justify-content-between">
+                                                <div class="reaction">
+                                                    <ul class=" d-flex gap-3">
+                                                        <li class="love" id="lovePostParent"><i id="lovePost"
+                                                                class="fa-regular fa-heart"></i>
+                                                            <span>45</span> Love
+                                                        </li>
+                                                        <li class="comment" id="commentPostParent"><i
+                                                                class="fa-regular fa-comment-dots"></i> <span>2</span>
+                                                            comment</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="save" id="savePostParent"><i id="savePost"
+                                                        class="fa-regular fa-bookmark"></i> Save</div>
+                                            </div>
+                                            <div class="commentSection" id="commentSection">
+                                                <div class="commentSort">
+                                                    <select name="sort_Comment" id="">
+                                                        <option value="AllComment">All Comments</option>
+                                                        <option value="MostRecent">Most Recent</option>
+                                                    </select>
+                                                </div>
+                                                <div class="commentPost_wrapper my-2">
+                                                    <div class="comment">
+                                                        <div class="commentDetails d-flex gap-3">
+                                                            <div class="commentIMG">
+                                                                <img src="{% static 'img/Group 2984.png'%}" alt=""
+                                                                    class="img-fluid">
+                                                            </div>
+                                                            <div class="commentInfo">
+                                                                <h3 class="m-0">Fatima mahmoud</h3>
+                                                                <p>Hello my friends in this wonderful community. it was
+                                                                    a very
+                                                                    wonderful
+                                                                    day. ihope to repeat it again</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="commentReaction">
+                                                            <ul class=" d-flex gap-3">
+                                                                <li class="love" id="loveCommentParent"><i id="lovePost"
+                                                                        class="fa-regular fa-heart"></i>
+                                                                    <span>5</span> Love
+                                                                </li>
+                                                                <li class="reply" id="replyCommentParent"><i
+                                                                        class="fa-regular fa-comment-dots"></i>
+                                                                    <span>2</span>
+                                                                    reply
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="form d-flex align-items-center gap-3">
+                                                    <div class="img"><img src="{% static 'img/Group 2984.png' %}" alt=""
+                                                            class="img-fluid">
+                                                    </div>
+                                                    <div class="addComment flex-grow-1 d-flex align-items-center">
+                                                        <input type="text" class="flex-grow-1"
+                                                            placeholder="What's in your mind?">
+                                                        <div class="actions d-flex gap-2">
+                                                            <i class="fa-regular fa-image"></i>
+                                                            <i class="fa-solid fa-camera"></i>
+                                                            <i class="fa-solid fa-paperclip"></i>
+                                                            <i class="fa-regular fa-face-grin"></i>
+                                                            <button><i class="fa-regular fa-paper-plane"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="post bg-white rounded-3 mb-5">
+                                            <div class="headPost d-flex justify-content-between">
+                                                <div class="info d-flex">
+                                                    <div class="img"><img src="{% static 'img/Group 2984.png' %}" alt=""
+                                                            class="img-fluid">
+                                                    </div>
+                                                    <div class="details">
+                                                        <h2>Mohamed Nabeel <span>in community</span></h2>
+                                                        <p>2 hours ago</p>
+                                                    </div>
+                                                </div>
+
+                                                <div class="options">
+                                                    <i class="fa-solid fa-ellipsis" id="PostOptionBTN"></i>
+                                                    <div class="menu" id="postOptionMenu">
+                                                        <ul class="d-flex flex-column gap-1">
+                                                            <li><button>Edit Post</button></li>
+                                                            <li><button>Delete Post</button></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="captionPost">
+                                                <p>Building strong communities is critical to our social and emotional
+                                                    well-being.
+                                                    Whether it is a community centered around a shared interest,</p>
+                                            </div>
+                                            <div class="mediaPost">
+                                                <img src="{% static 'img/MediaPost.png' %}" alt="" class="img-fluid">
+                                            </div>
+                                            <div class="actionPost m-3 d-flex justify-content-between">
+                                                <div class="reaction">
+                                                    <ul class=" d-flex gap-3">
+                                                        <li class="love" id="lovePostParent"><i id="lovePost"
+                                                                class="fa-regular fa-heart"></i>
+                                                            <span>45</span> Love
+                                                        </li>
+                                                        <li class="comment" id="commentPostParent"><i
+                                                                class="fa-regular fa-comment-dots"></i> <span>2</span>
+                                                            comment</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="save" id="savePostParent"><i id="savePost"
+                                                        class="fa-regular fa-bookmark"></i> Save</div>
+                                            </div>
+                                            <div class="commentSection" id="commentSection">
+                                                <div class="commentSort">
+                                                    <select name="sort_Comment" id="">
+                                                        <option value="AllComment">All Comments</option>
+                                                        <option value="MostRecent">Most Recent</option>
+                                                    </select>
+                                                </div>
+                                                <div class="commentPost_wrapper my-2">
+                                                    <div class="comment">
+                                                        <div class="commentDetails d-flex gap-3">
+                                                            <div class="commentIMG">
+                                                                <img src="{% static 'img/Group 2984.png' %}" alt=""
+                                                                    class="img-fluid">
+                                                            </div>
+                                                            <div class="commentInfo">
+                                                                <h3 class="m-0">Fatima mahmoud</h3>
+                                                                <p>Hello my friends in this wonderful community. it was
+                                                                    a very
+                                                                    wonderful
+                                                                    day. ihope to repeat it again</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="commentReaction">
+                                                            <ul class=" d-flex gap-3">
+                                                                <li class="love" id="loveCommentParent"><i id="lovePost"
+                                                                        class="fa-regular fa-heart"></i>
+                                                                    <span>5</span> Love
+                                                                </li>
+                                                                <li class="reply" id="replyCommentParent"><i
+                                                                        class="fa-regular fa-comment-dots"></i>
+                                                                    <span>2</span>
+                                                                    reply
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="form d-flex align-items-center gap-3">
+                                                    <div class="img"><img src="{% static 'img/Group 2984.png' %}" alt=""
+                                                            class="img-fluid">
+                                                    </div>
+                                                    <div class="addComment flex-grow-1 d-flex align-items-center">
+                                                        <input type="text" class="flex-grow-1"
+                                                            placeholder="What's in your mind?">
+                                                        <div class="actions d-flex gap-2">
+                                                            <i class="fa-regular fa-image"></i>
+                                                            <i class="fa-solid fa-camera"></i>
+                                                            <i class="fa-solid fa-paperclip"></i>
+                                                            <i class="fa-regular fa-face-grin"></i>
+                                                            <button><i class="fa-regular fa-paper-plane"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="post bg-white rounded-3 mb-5">
+                                            <div class="headPost d-flex justify-content-between">
+                                                <div class="info d-flex">
+                                                    <div class="img"><img src="{% static 'img/Group 2984.png' %}" alt=""
+                                                            class="img-fluid">
+                                                    </div>
+                                                    <div class="details">
+                                                        <h2>Mohamed Nabeel <span>in community</span></h2>
+                                                        <p>2 hours ago</p>
+                                                    </div>
+                                                </div>
+
+                                                <div class="options">
+                                                    <i class="fa-solid fa-ellipsis" id="PostOptionBTN"></i>
+                                                    <div class="menu" id="postOptionMenu">
+                                                        <ul class="d-flex flex-column gap-1">
+                                                            <li><button>Edit Post</button></li>
+                                                            <li><button>Delete Post</button></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="captionPost">
+                                                <p>Building strong communities is critical to our social and emotional
+                                                    well-being.
+                                                    Whether it is a community centered around a shared interest,</p>
+                                            </div>
+                                            <div class="mediaPost">
+                                                <img src="{% static 'img/MediaPost.png'%}" alt="" class="img-fluid">
+                                            </div>
+                                            <div class="actionPost m-3 d-flex justify-content-between">
+                                                <div class="reaction">
+                                                    <ul class=" d-flex gap-3">
+                                                        <li class="love" id="lovePostParent"><i id="lovePost"
+                                                                class="fa-regular fa-heart"></i>
+                                                            <span>45</span> Love
+                                                        </li>
+                                                        <li class="comment" id="commentPostParent"><i
+                                                                class="fa-regular fa-comment-dots"></i> <span>2</span>
+                                                            comment</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="save" id="savePostParent"><i id="savePost"
+                                                        class="fa-regular fa-bookmark"></i> Save</div>
+                                            </div>
+                                            <div class="commentSection" id="commentSection">
+                                                <div class="commentSort">
+                                                    <select name="sort_Comment" id="">
+                                                        <option value="AllComment">All Comments</option>
+                                                        <option value="MostRecent">Most Recent</option>
+                                                    </select>
+                                                </div>
+                                                <div class="commentPost_wrapper my-2">
+                                                    <div class="comment">
+                                                        <div class="commentDetails d-flex gap-3">
+                                                            <div class="commentIMG">
+                                                                <img src="{% static 'img/Group 2984.png' %}" alt=""
+                                                                    class="img-fluid">
+                                                            </div>
+                                                            <div class="commentInfo">
+                                                                <h3 class="m-0">Fatima mahmoud</h3>
+                                                                <p>Hello my friends in this wonderful community. it was
+                                                                    a very
+                                                                    wonderful
+                                                                    day. ihope to repeat it again</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="commentReaction">
+                                                            <ul class=" d-flex gap-3">
+                                                                <li class="love" id="loveCommentParent"><i id="lovePost"
+                                                                        class="fa-regular fa-heart"></i>
+                                                                    <span>5</span> Love
+                                                                </li>
+                                                                <li class="reply" id="replyCommentParent"><i
+                                                                        class="fa-regular fa-comment-dots"></i>
+                                                                    <span>2</span>
+                                                                    reply
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="form d-flex align-items-center gap-3">
+                                                    <div class="img"><img src="{% static 'img/Group 2984.png' %}" alt=""
+                                                            class="img-fluid">
+                                                    </div>
+                                                    <div class="addComment flex-grow-1 d-flex align-items-center">
+                                                        <input type="text" class="flex-grow-1"
+                                                            placeholder="What's in your mind?">
+                                                        <div class="actions d-flex gap-2">
+                                                            <i class="fa-regular fa-image"></i>
+                                                            <i class="fa-solid fa-camera"></i>
+                                                            <i class="fa-solid fa-paperclip"></i>
+                                                            <i class="fa-regular fa-face-grin"></i>
+                                                            <button><i class="fa-regular fa-paper-plane"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+
+</html>
