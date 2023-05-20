@@ -33,9 +33,10 @@ GENDER_CHOICES = [
     ('Other','Other'),
 ]
 
-def image_user(instance,filename):
-    imgename , extension = filename.split(".")
-    return "profile_user/%s.%s"%(instance.id, extension)
+def image_user(instance, filename):
+    imgename, extension = filename.rsplit(".", 1)
+    return "profile_user/%s.%s" % (instance.id, extension)
+
 
 class UserProfile(models.Model):  
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
@@ -60,7 +61,7 @@ class UserProfile(models.Model):
 # # # ################################################
 
 def image_places(instance,filename):
-    imgename , extension = filename.split(".")
+    imgename , extension = filename.split(".", 1)
     return "profile_places/%s.%s"%(instance.id, extension)
 
 class PlacesProfile(models.Model):
