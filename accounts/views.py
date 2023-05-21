@@ -11,6 +11,9 @@ from .models import UserProfile, PlacesProfile
 from django.urls import reverse_lazy
 from django.conf import settings
 from django.db.models.signals import post_save
+from django.contrib.auth import logout
+
+
 
 User = get_user_model()
 
@@ -39,7 +42,7 @@ def registeruser(request):
         user = authenticate(username=username, password=raw_password)
         if user is not None:
             login(request, user)
-            return redirect('accounts:login')
+            return redirect('accounts:userprofile', profile_id=user_profile.id)
     else:
         form = RegisterUserForm()
         user_profile_form = UserProfileForm()
@@ -62,7 +65,7 @@ def registerplaces(request):
         user = authenticate(username=username, password=raw_password)
         if user is not None:
             login(request, user)
-            return redirect('accounts:login')
+            return redirect('accounts:placesprofile', places_profile_id=places_profile.id)
     else:
         form = RegisterPlacesForm()
         places_profile_form = PlacesProfileForm()
@@ -107,23 +110,19 @@ def places_profile(request, places_profile_id):
     places_profile = get_object_or_404(PlacesProfile, id=places_profile_id, user=request.user)
     return render(request, 'profile_places.html', {'places_profile': places_profile})
 
+def logout_view(request):
+    logout(request)
+    return redirect('accounts:login')  
 
 
-# import urllib.request
-# from django.http import request
+# @login_required
+# def user_ist(request, profile_id):
+#     field_user_profile = UserProfile.objects.get(user=request.user)
+#     context = {
+#         'field_user_profile': field_user_profile
+#     }   
+#     return redirect('profile_user.html') 
 
-# field_user_profile = UserProfile.objects.get(user=request.user)
-# context = {
-#     'field_user_profile': field_user_profile
-# }
-
-
-# from django.http import request
-
-field_user_profile = UserProfile.objects.get(user=request.user)
-context = {
-    'field_user_profile': field_user_profile
-}
 
 
 # from django.contrib.auth import get_user

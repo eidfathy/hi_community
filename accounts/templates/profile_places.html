@@ -95,7 +95,7 @@
                                             alt=""><span>Setting</span></a></li>
                             </div>
                             <div class="down">
-                                <li><a href="#" class="leftSideOption"><img src="{% static 'img/logOut.png' %}"
+                                <li><a href="{% url 'accounts:logout' %}" class="leftSideOption"><img src="{% static 'img/logOut.png' %}"
                                             alt=""><span>logout</span></a>
                                 </li>
                             </div>
@@ -113,7 +113,7 @@
                                     <img src="{% static 'img/ProfilePlaces.png' %}" alt="profile">
                                 </div>
                                 <div class="name">
-                                    <h2>{{user.placesprofile.nameplaces}}</h2> 
+                                    <h2>{{places_profile.nameplaces}}</h2> 
                                     <p>@{{user.username}}</p>
                                 </div>
                             </div>
@@ -142,21 +142,21 @@
                                         <ul>
                                             <li>
                                                 <i class="fa-brands fa-facebook"></i>
-                                                <a href="#">www.facebook.com/kfcarabia/</a>
+                                                <a href="#">{{places_profile.phone_number}}</a>
                                             </li>
                                             <li>
                                                 <i class="fa-brands fa-instagram"></i>
-                                                <a href="#">www.instagram.com/kfc/</a>
+                                                <a href="#">{{places_profile.phone_number}}</a>
 
                                             </li>
                                             <li>
                                                 <i class="fa-solid fa-location-dot"></i>
-                                                cairo
+                                                {{places_profile.phone_number}}
                                             </li>
 
                                             <li>
                                                 <i class="fa-solid fa-location-dot"></i>
-                                                cairo
+                                                {{places_profile.phone_number}}
                                             </li>
 
                                         </ul>

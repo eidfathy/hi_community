@@ -95,7 +95,7 @@
                                             alt=""><span>Setting</span></a></li>
                             </div>
                             <div class="down">
-                                <li><a href="#" class="leftSideOption"><img src="{% static 'img/logOut.png' %}"
+                                <li><a href="{% url 'accounts:logout' %}" class="leftSideOption"><img src="{% static 'img/logOut.png' %}"
                                             alt=""><span>logout</span></a>
                                 </li>
                             </div>
@@ -145,19 +145,19 @@
                                         <ul>
                                             <li>
                                                 <i class="fa-solid fa-briefcase"></i>
-                                                <p>{{ field_user_profile.job_tite }}</p>
+                                                {{ profile.job_tite }}
                                             </li>
                                             <li>
                                                 <i class="fa-solid fa-graduation-cap"></i>
-                                                {{userprofile.user.education}} 
+                                                {{ profile.education }}
                                             </li>
                                             <li>
                                                 <i class="fa-solid fa-location-dot"></i>
-                                                {{user.userprofile.country}}
+                                                {{profile.country}}
                                             </li>
                                             <li>
                                                 <i class="fa-solid fa-calendar"></i>
-                                                {{user.userprofile.birth_day|date:"D d M Y"}}
+                                                {{profile.birth_day|date:"D d M Y"}}
                                             </li>
                                         </ul>
                                         
@@ -213,13 +213,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed aliquam
-                                            consequuntur nisi sequi possimus distinctio, assumenda alias totam soluta
-                                            numquam voluptates ea, repellat repudiandae, consectetur ex quisquam
-                                            obcaecati quibusdam sit! Lorem ipsum dolor sit amet consectetur adipisicing
-                                            elit. Aliquam corrupti dicta voluptatem pariatur magnam distinctio fugit
-                                            exercitationem. Ratione totam, aperiam fugit eius molestiae, amet quo
-                                            reprehenderit veniam tempora impedit ad.</p>
+                                        <p>{{profile.about_me}}</p>
                                     </div>
                                     <form class="createPost bg-white rounded-3 p-4 mb-3">
                                         <div class="head d-flex gap-3">
