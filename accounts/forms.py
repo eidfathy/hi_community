@@ -2,10 +2,9 @@ from typing import Any
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import get_user_model
-from .models import UserProfile, PlacesProfile
+from .models import UserProfile, PlacesProfile, User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
-User = get_user_model()
 
 class RegisterUserForm(UserCreationForm):
     CHOICES = [

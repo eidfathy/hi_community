@@ -16,3 +16,4 @@ urlpatterns = [
     path('placesprofile/<int:places_profile_id>/', places_profile, name='placesprofile'),
 
 ]
+

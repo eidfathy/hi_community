@@ -1,5 +1,6 @@
 from audioop import reverse
 from ctypes.wintypes import HINSTANCE
+from urllib import request
 from django.dispatch import receiver
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, get_user_model
@@ -108,9 +109,31 @@ def places_profile(request, places_profile_id):
 
 
 
+# import urllib.request
+# from django.http import request
+
+# field_user_profile = UserProfile.objects.get(user=request.user)
+# context = {
+#     'field_user_profile': field_user_profile
+# }
 
 
+# from django.http import request
 
+field_user_profile = UserProfile.objects.get(user=request.user)
+context = {
+    'field_user_profile': field_user_profile
+}
+
+
+# from django.contrib.auth import get_user
+
+
+# User = get_user(request)
+# field_user_profile = UserProfile.objects.get(user=User)
+# context = {
+#         'field_user_profile': field_user_profile
+#     }
 
 
 
