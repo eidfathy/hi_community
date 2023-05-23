@@ -1,0 +1,59 @@
+{% load static %}
+
+
+    <form class="createPost bg-white rounded-3 p-4 mb-3">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="head d-flex gap-3">
+                <div class="img"><img src="{{ profile.image.url }}" alt="user photo"
+                        class="img-fluid"></div>
+                <input type="text" class="form-control rounded-pill" id="CreatePost"
+                    placeholder="Some Something">
+
+            </div>
+            <div class="media">
+                <ul>
+                    <li>
+                        <div class="img">
+                            <img src="{% static 'picture 1.png' %}" alt="photo icon">
+                            <span>Image</span>
+                        </div>
+                        <input type="file">
+                    </li>
+                    <li>
+                        <div class="img">
+                            <img src="{% static 'img/camera 1.png' %}" alt="photo icon">
+                            <span>Video</span>
+                        </div>
+                        <input type="file" style="cursor: pointer">
+                    </li>
+                    <li>
+                        <div class="img">
+                            <img src="{% static 'img/paper.png' %}" alt="photo icon">
+                            <span>Attachment</span>
+                        </div>
+                        <input type="file">
+                    </li>
+                    <li>
+                        <div class="img">
+                            <img src="{% static 'img/LocationPost.png' %}" alt="photo icon">
+                            <span>Location</span>
+                        </div>
+                        <input type="file">
+                    </li>
+                    <li>
+                        <div class="img">
+                            <img src="{% static 'img/communityPost.png' %}" alt="photo icon">
+                            <span>Community</span>
+                        </div>
+                        <input type="file">
+                    </li>
+                    <li>
+                        <button type="submit">Add Post</button>
+                    </li>
+                </ul>
+            </div>
+        </form>
+    </form>
+

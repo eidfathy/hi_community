@@ -110,7 +110,7 @@
                         <div class="UserInfo d-flex justify-content-between align-items-center">
                             <div class="details d-flex align-items-center">
                                 <div class="img">
-                                    <img src="{% static 'img/ProfileIMG.png' %}" alt="profile">
+                                    <img src="{{ profile.image.url }}" alt="profile">
                                 </div>
                                 <div class="name">
                                     <h2>{{user.first_name}} {{user.last_name}}</h2>
@@ -215,7 +215,16 @@
                                         </div>
                                         <p>{{profile.about_me}}</p>
                                     </div>
-                                    <form class="createPost bg-white rounded-3 p-4 mb-3">
+                                    
+                                    <div class="basic">
+                                        {% include 'create_post.html' %}  
+                                    </div>
+
+                                    <div class="basic">
+                                        {% include 'detail_post.html' %}  
+                                    </div>
+
+                                    {% comment %} <form class="createPost bg-white rounded-3 p-4 mb-3">
                                         <div class="head d-flex gap-3">
                                             <div class="img"><img src="{% static 'img/Group 2984.png' %}" alt="user photo"
                                                     class="img-fluid"></div>
@@ -674,7 +683,9 @@
 
                                         </div>
 
-                                    </div>
+                                    </div> {% endcomment %}
+
+
                                 </div>
                             </div>
                         </div>

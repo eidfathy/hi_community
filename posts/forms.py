@@ -12,22 +12,38 @@
 #         fields = ['content']
 
 
+# from django import forms
+# from .models import Post_User
+
+# class CreatePostForm(forms.ModelForm):
+#     class Meta:
+#         model = Post_User
+#         fields = ['content_text', 'image']
+
+# class EditPostForm(forms.ModelForm):
+#     class Meta:
+#         model = Post_User
+#         fields = ['content_text', 'image']
+
+# class LikePostForm(forms.Form):
+#     pass
+
+# class UnlikePostForm(forms.Form):
+#     pass
+
+##########################
+
 from django import forms
-from .models import Post_User
+from .models import PostUser, CommentPostUser
 
-class CreatePostForm(forms.ModelForm):
+class PostForm(forms.ModelForm):
     class Meta:
-        model = Post_User
+        model = PostUser
         fields = ['content_text', 'image']
 
-class EditPostForm(forms.ModelForm):
+class CommentForm(forms.ModelForm):
     class Meta:
-        model = Post_User
-        fields = ['content_text', 'image']
+        model = CommentPostUser
+        fields = ['comment_content']
 
-class LikePostForm(forms.Form):
-    pass
-
-class UnlikePostForm(forms.Form):
-    pass
 
