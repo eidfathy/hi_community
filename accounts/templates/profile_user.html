@@ -220,10 +220,19 @@
                                         {% include 'create_post.html' %}  
                                     </div>
 
-                                    <div class="basic">
-                                        {% include 'detail_post.html' %}  
-                                    </div>
+                                    {% comment %} <button type="submit" class="btn btn-primary" ><a href="{% url 'posts:create_post' %}">Create Post</a></button> {% endcomment %}
+                                    {% for post in posts %}
+                                        <div class="basic">
+                                            {% include 'detail_post.html' %}  
+                                        </div> 
+                                    {% empty %}
+                                        <p>No posts yet.</p>
+                                    {% endfor %}
 
+                                    {% comment %} <div class="basic">
+                                        {% include 'detail_post.html' %}  
+                                    </div>  {% endcomment %}
+                                    
                                     {% comment %} <form class="createPost bg-white rounded-3 p-4 mb-3">
                                         <div class="head d-flex gap-3">
                                             <div class="img"><img src="{% static 'img/Group 2984.png' %}" alt="user photo"
