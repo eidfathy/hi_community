@@ -4,7 +4,7 @@ from urllib import request
 from django.dispatch import receiver
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, get_user_model
-from .forms import RegisterUserForm, UserProfileForm, PlacesProfileForm, RegisterPlacesForm, LoginForm
+from .forms import RegisterUserForm, UserProfileForm, PlacesProfileForm, RegisterPlacesForm, LoginForm, NewPostForm
 from accounts.models import User
 from django.contrib.auth.decorators import login_required
 from .models import UserProfile, PlacesProfile
@@ -12,7 +12,7 @@ from django.urls import reverse_lazy
 from django.conf import settings
 from django.db.models.signals import post_save
 from django.contrib.auth import logout
-
+from posts.models import Post
 
 
 User = get_user_model()
@@ -100,10 +100,39 @@ def custom_login(request):
 
 
 
+
 @login_required
 def user_profile(request, profile_id):
     profile = get_object_or_404(UserProfile, id=profile_id, user=request.user)
-    return render(request, 'profile_user.html', {'profile': profile})
+    post_user_list = Post.objects.all()
+    context = {'profile':profile, 'posts':post_user_list} # tempate name
+    return render(request, 'profile_user.html', context)
+
+
+@login_required
+def create_post(request):
+    if request.method == 'POST':
+        form = NewPostForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            new_post = form.save(commit=False)
+            new_post.creater = request.user
+            new_post.save()
+
+            return redirect('userprofile', pk=new_post.id)
+    else:
+        form = NewPostForm()
+        
+    context = {'form': form}
+    return render(request, 'profile_user.html', context)
+
+@login_required
+def post_user_detail(request, id):
+    post_user_detail = Post.objects.get(id=id)
+    context = {'post':post_user_detail}
+    return render(request, 'profile_user.html', context)
+
+
 
 @login_required
 def places_profile(request, places_profile_id):
@@ -113,6 +142,35 @@ def places_profile(request, places_profile_id):
 def logout_view(request):
     logout(request)
     return redirect('accounts:login')  
+
+
+
+# @login_required
+# def create_post(request):
+#     if request.method == 'POST':
+#         form = NewPostForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('detail_post')
+#     else:
+#         form = NewPostForm()
+#     return render(request, 'create_post.html', {'form': form})
+
+
+
+# @login_required
+# def index(request):
+#     posts = Post.objects.filter(is_sold=False)[0:6]
+#     creaters = UserProfile.objects.all()
+#     return render(request, 'profile_user.html', {'creaters': creaters,'posts': posts,})
+
+# def post_user_list(request):
+#     post_user_list = Post.objects.all()
+#     context = {'posts':post_user_list} # tempate name
+#     return render(request, 'post_user_detail.html', context)
+
+
+
 
 
 # @login_required

@@ -15,13 +15,18 @@
 </head>
 
 <body>
+
+                                <div class="middle">
+
+                                    
                                     <form class="createPost bg-white rounded-3 p-4 mb-3">
-                                      {% csrf_token %}
+                                    {% csrf_token %}
                                         <div class="head d-flex gap-3">
                                             <div class="img"><img src="{{ profile.image.url }}" alt="user photo"
                                                     class="img-fluid"></div>
                                             {{form.description}}
                                             
+
                                         </div>
                                         <div class="media">
                                             <ul>
@@ -70,8 +75,8 @@
                                             </ul>
                                         </div>
                                     </form>
+
+                            </div>
+
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
     <script src="{% static 'js/script.js' %}"></script>
-</body>
-
-</html>

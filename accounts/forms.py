@@ -4,6 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import get_user_model
 from .models import UserProfile, PlacesProfile, User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from posts.models import Post
 
 
 class RegisterUserForm(UserCreationForm):
@@ -65,3 +66,40 @@ class LoginForm(AuthenticationForm):
 
     username = forms.CharField(label='Email', max_length=100, widget=forms.TextInput(attrs={'class': 'form-control'}))
     password = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+
+INPUT_CLASSES = 'form-control rounded-pill'
+
+# class NewPostForm(forms.ModelForm):
+#     class Meta:
+#         model = Post
+#         fields = ('description', 'image',)
+#         widgets = {
+#             'description': forms.Select(attrs={'class': INPUT_CLASSES}),
+#             'image': forms.FileInput(attrs={'class': INPUT_CLASSES})
+#         }
+
+class NewPostForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs) -> None:
+        super().__init__( *args, **kwargs)
+        self.fields['description'].widget.attrs.update({
+            'type':'text',
+            'class':'form-control rounded-pill',
+            'id':'CreatePost',
+            'placeholder':'Some Something',
+            'name':'description',
+            'required':'',
+        })
+        self.fields['image'].widget.attrs.update({
+            'type':'file',
+            'id':'image',
+            'name':'image',
+        })
+    class Meta:
+        model = Post
+        fields = ['description', 'image']
+
+
+# class NewPostForm(forms.ModelForm):
+#     class Meta:
+#         model = Post
+#         fields = ['description', 'image']
