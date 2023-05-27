@@ -1,3 +1,4 @@
+from audioop import reverse
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils.translation import ugettext_lazy as _
@@ -26,6 +27,27 @@ class User(AbstractUser):
 
 # # #####################################################
 # # #####################################################
+from django.utils.text import slugify
+
+class Interest(models.Model):
+	title = models.CharField(max_length=75, verbose_name='interest')
+	slug = models.SlugField(null=False, unique=True)
+
+	class Meta:
+		verbose_name='interest'
+		verbose_name_plural = 'interests'
+
+	def get_absolute_url(self):
+		return reverse('interests', args=[self.slug])
+		
+	def __str__(self):
+		return self.title
+
+	def save(self, *args, **kwargs):
+		if not self.slug:
+			self.slug = slugify(self.title)
+		return super().save(*args, **kwargs)
+
 
 GENDER_CHOICES = [
     ('Male','Male'),
@@ -41,7 +63,7 @@ def image_user(instance, filename):
 class UserProfile(models.Model):  
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     
-    image = models.ImageField(upload_to=image_user)
+    image = models.ImageField(upload_to=image_user, null=True)
     phone_number = models.CharField(max_length=15,)
     birth_day = models.DateField(auto_now_add=False, null=True)
     type = models.CharField(max_length=7, choices=GENDER_CHOICES)
@@ -53,6 +75,7 @@ class UserProfile(models.Model):
     about_me = models.TextField(max_length=1000, null=True,)
     #interests
     published_at = models.DateTimeField(auto_now=True)
+    interest = models.ManyToManyField(Interest, related_name='interests')
     
     def __str__(self) -> str:
         return self.user.username if self.user else 'No User'
@@ -67,7 +90,7 @@ def image_places(instance,filename):
 class PlacesProfile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     
-    image = models.ImageField(upload_to=image_places)
+    image = models.ImageField(upload_to=image_places, null=True)
     nameplaces = models.CharField(max_length=100)
     phone_number = models.CharField(max_length=15,)
     type = models.CharField(max_length=7, choices=GENDER_CHOICES)
@@ -79,10 +102,11 @@ class PlacesProfile(models.Model):
     #interests
     about_me = models.TextField(max_length=1000)
     published_at = models.DateTimeField(auto_now=True)
+    facebook = models.CharField(max_length=30,null=True)
+    instagram = models.CharField(max_length=30,null=True)
     
     def __str__(self) -> str:
         return self.user.username if self.user else 'No User'
-
 
 
 

@@ -1,7 +1,7 @@
 from audioop import reverse
 import datetime
 from django.db import models
-from accounts.models import UserProfile
+from accounts.models import UserProfile, PlacesProfile
 from datetime import datetime
 
 
@@ -38,3 +38,21 @@ class Like(models.Model):
     
     def __str__(self):
         return f"{str(self.creater)}  Like In Post=> {str(self.post)}"
+    
+
+
+
+class PostPlaces(models.Model):
+    creater = models.ForeignKey(PlacesProfile, on_delete=models.CASCADE, related_name="createdpost")
+    description = models.CharField(max_length=500)
+    image = models.ImageField(upload_to=image_post_user)
+    created_at = models.DateTimeField(default=datetime.now)
+    tags = models.CharField(max_length=100, blank=True)
+
+    def __str__(self):
+        return f"{str(self.creater)} Create Post=> {str(self.description)}"
+
+    def get_absolute_url(self):
+        return reverse('post-detail', kwargs={'pk': self.pk})
+
+

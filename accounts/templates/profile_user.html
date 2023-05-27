@@ -60,7 +60,8 @@
                             </div>
                         </ul>
                         <div class="profileIMG">
-                            <img src="{% static 'img/Group 2984.png' %}" alt="profile photo">
+                            <img src="{% static 'img/Group 2984.png' %}" alt="profile photo"> 
+                            {% comment %} {{ profile.image.url }} {% endcomment %}
                         </div>
                     </div>
                 </div>
@@ -83,13 +84,13 @@
                         <ul class="d-flex flex-column justify-content-between">
                             <div class="upper d-flex flex-column gap-4">
 
-                                <li><a class="leftSideOption" href="#"><img src="{% static 'img/homeGray_.png' %}" alt="">
+                                <li><a class="leftSideOption" href="{% url 'accounts:home' %}"><img src="{% static 'img/homeGray_.png' %}" alt="">
                                         <span>Home</span></a></li>
                                 <li><a href="#" class="leftSideOption active"><img src="{% static 'img/profileWhite.png' %}"
                                             alt=""><span>Profile</span></a></li>
                                 <li><a href="#" class="leftSideOption"><img src="{% static 'img/chat.png' %}"
                                             alt=""><span>Chat</span></a></li>
-                                <li><a href="#" class="leftSideOption"><img src="{% static 'img/community.png' %}"
+                                <li><a href="{% url 'community:community' %}" class="leftSideOption"><img src="{% static 'img/community.png' %}"
                                             alt=""><span>Community</span></a>
                                 </li>
                                 <li><a href="#" class="leftSideOption"><img src="{% static 'img/setting.png' %}"
@@ -177,9 +178,11 @@
                                             </div>
                                         </div>
                                         <div class="interst_wrapper d-flex gap-2 flex-wrap">
+                                            {% for interest in interests %}
                                             <div class="interst red">
-                                                css
+                                                {{ profile.interest }}
                                             </div>
+                                            {% endfor %}
                                             <div class="interst green">
                                                 html
                                             </div>
@@ -216,14 +219,18 @@
                                         </div>
                                         <p>{{profile.about_me}}</p>
                                     </div>
+                                    
+                                    
 
-                                
-                                    <form class="createPost bg-white rounded-3 p-4 mb-3">
+
+                                    <form method="post" actions= "" class="createPost bg-white rounded-3 p-4 mb-3" enctype="multipart/form-data" role="form">
+                                        {% csrf_token %}
                                         <div class="head d-flex gap-3">
                                             <div class="img"><img src="{{ profile.image.url }}" alt="user photo"
                                                     class="img-fluid"></div>
-                                            <input type="text" class="form-control rounded-pill" id="CreatePost" placeholder="Some Something">
                                             
+                                            {% comment %} <input type="text" class="form-control rounded-pill" id="CreatePost" placeholder="Some Something" value="{{ form.description }}">  {% endcomment %}
+                                            {{ form.description }}
 
                                         </div>
                                         <div class="media">
@@ -232,6 +239,7 @@
                                                     <div class="img">
                                                         <img src="{% static 'img/picture 1.png' %}" alt="photo icon">
                                                         <span>Image</span>
+                                                        {{ form.image }}
                                                     </div>
                                                     <input type="file">
                                                 </li>
@@ -272,7 +280,7 @@
                                 
                                     <div class="posts_wrapper">
 
-                                        {% for post in posts %}
+                                        {% for post in posts reversed  %}
                                         <div class="post bg-white rounded-3 mb-5">
                                             <div class="headPost d-flex justify-content-between">
                                                 <div class="info d-flex">

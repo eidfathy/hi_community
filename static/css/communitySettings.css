@@ -1,0 +1,101 @@
+.row {
+  gap: 10%;
+}
+.row .center-col {
+  flex: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em 2em;
+  background-color: white;
+  border-radius: 20px;
+  height: calc(100vh - 168px);
+}
+.container .settings {
+  overflow: auto;
+}
+.container .settings .header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container .settings .header .cover {
+  position: relative;
+}
+.container .settings .header .cover .action {
+  top: 10px;
+  right: 10px;
+}
+.container .settings .header .profile {
+  position: relative;
+  margin-top: -10%;
+}
+.container .settings .header .profile .action {
+  bottom: 10px;
+  left: 16px;
+}
+.container .settings .header .action {
+  cursor: pointer;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  border-radius: 50%;
+  background: #0780ef;
+}
+.container .settings .details {
+  margin-top: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+.container .settings .details .about textarea, .container .about .settings .details textarea, .container .settings .details .field input {
+  font-size: 1.1em;
+  padding: 1em 1em;
+  width: 100%;
+  border: none;
+  background: #f3f5f7;
+  border-radius: 8px;
+}
+.container .settings .details .about textarea:focus, .container .about .settings .details textarea:focus, .container .settings .details .field input:focus {
+  outline: none;
+  border: none;
+}
+.container .settings .details .field {
+  width: 100%;
+  position: relative;
+}
+.container .settings .details .field .action {
+  position: absolute;
+  right: 10px;
+  top: 25%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0681f1;
+  border-radius: 50%;
+}
+.container .about textarea {
+  height: 100px;
+  resize: none;
+}
+.container .btn {
+  padding: 0.5em 0;
+  margin-top: 0.3em;
+  color: white;
+  font-size: 1.2em;
+  width: 100%;
+  background: linear-gradient(90deg, #0666cd 0%, #0681f1 100%);
+  border-radius: 8px;
+}/*# sourceMappingURL=communitySettings.css.map */

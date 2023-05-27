@@ -20,7 +20,7 @@ class RegisterUserForm(UserCreationForm):
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ['phone_number', 'birth_day', 'type', 'address', 'country', 'area', 'education', 'job_tite', 'about_me']
+        fields = ['phone_number', 'birth_day', 'type', 'address', 'country', 'area', 'education', 'job_tite', 'about_me', 'interest']
 
 
 class RegisterPlacesForm(UserCreationForm):
@@ -36,7 +36,7 @@ class RegisterPlacesForm(UserCreationForm):
 class PlacesProfileForm(forms.ModelForm):
     class Meta:
         model = PlacesProfile
-        fields = ['nameplaces', 'phone_number', 'type', 'address', 'country', 'area', 'sarves', 'about_me']
+        fields = ['nameplaces', 'phone_number', 'type', 'address', 'country', 'area', 'sarves', 'about_me','facebook', 'instagram']
 
 
 
@@ -67,17 +67,7 @@ class LoginForm(AuthenticationForm):
     username = forms.CharField(label='Email', max_length=100, widget=forms.TextInput(attrs={'class': 'form-control'}))
     password = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'class': 'form-control'}))
 
-INPUT_CLASSES = 'form-control rounded-pill'
-
-# class NewPostForm(forms.ModelForm):
-#     class Meta:
-#         model = Post
-#         fields = ('description', 'image',)
-#         widgets = {
-#             'description': forms.Select(attrs={'class': INPUT_CLASSES}),
-#             'image': forms.FileInput(attrs={'class': INPUT_CLASSES})
-#         }
-
+INPUT_CLASSES = 'createPost bg-white rounded-3 p-4 mb-3'
 class NewPostForm(forms.ModelForm):
     def __init__(self, *args, **kwargs) -> None:
         super().__init__( *args, **kwargs)
@@ -97,9 +87,34 @@ class NewPostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ['description', 'image']
-
+        widgets = {
+            'description': forms.Select(attrs={'class': INPUT_CLASSES}),
+            'image': forms.FileInput(attrs={'class': INPUT_CLASSES})
+        }
+    description = forms.CharField(label='CreatePost', max_length=100, widget=forms.TextInput(attrs={'class': 'form-control rounded-pill'}))
 
 # class NewPostForm(forms.ModelForm):
+#     description = forms.CharField(
+#         label='CreatePost',
+#         max_length=100,
+#         widget=forms.TextInput(attrs={'class': 'form-control rounded-pill createPost bg-white rounded-3 p-4 mb-3'})
+#     )
+
 #     class Meta:
 #         model = Post
 #         fields = ['description', 'image']
+#         widgets = {
+#             'image': forms.FileInput(attrs={'class': 'createPost bg-white rounded-3 p-4 mb-3'})
+#         }
+
+
+
+# class NewPostForm(forms.ModelForm):
+#     description = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control rounded-pill'}), required=True)
+#     image = forms.ImageField(required=True)
+
+#     class Meta:
+#         model = Post
+#         fields = ['description', 'image']
+
+

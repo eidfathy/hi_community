@@ -28,6 +28,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include(('accounts.urls', 'accounts'), namespace='accounts')),
     path('posts/', include(('posts.urls', 'posts'), namespace='posts')),
+    path('chat/', include(('chat.urls', 'home'), namespace='chat')),
+    path('community/', include(('community.urls', 'community'), namespace='community')),
 ] 
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

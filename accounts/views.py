@@ -12,7 +12,7 @@ from django.urls import reverse_lazy
 from django.conf import settings
 from django.db.models.signals import post_save
 from django.contrib.auth import logout
-from posts.models import Post
+from posts.models import Post, PostPlaces
 
 
 User = get_user_model()
@@ -20,11 +20,6 @@ User = get_user_model()
 def register(request):
     return render(request, 'register.html', {})
 
-# def profile_user(request):
-#     return render(request, 'profile_user.html', {})
-
-# def profile_places(request):
-#     return render(request, 'profile_places.html', {})
 
 def registeruser(request):
     if request.method == 'POST':
@@ -109,6 +104,29 @@ def user_profile(request, profile_id):
     return render(request, 'profile_user.html', context)
 
 
+
+# @login_required
+# def user_profile(request, profile_id):
+#     profile = get_object_or_404(UserProfile, user=request.user, id=profile_id)
+#     post_user_list = Post.objects.filter(creater=profile.user)
+#     context = {'profile': profile, 'posts': post_user_list}
+#     return render(request, 'profile_user.html', context)
+
+
+@login_required
+def places_profile(request, places_profile_id):
+    places_profile = get_object_or_404(PlacesProfile, id=places_profile_id, user=request.user)
+    post_places_list = PostPlaces.objects.all()
+    context = {'places_profile': places_profile, 'postsplaces': post_places_list}
+    return render(request, 'profile_places.html', context)
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('accounts:login')  
+
+
+
 @login_required
 def create_post(request):
     if request.method == 'POST':
@@ -118,146 +136,64 @@ def create_post(request):
             new_post = form.save(commit=False)
             new_post.creater = request.user
             new_post.save()
-
             return redirect('userprofile', pk=new_post.id)
     else:
-        form = NewPostForm()
+        newpost = NewPostForm()
         
     context = {'form': form}
     return render(request, 'profile_user.html', context)
 
-@login_required
-def post_user_detail(request, id):
-    post_user_detail = Post.objects.get(id=id)
-    context = {'post':post_user_detail}
-    return render(request, 'profile_user.html', context)
-
-
-
-@login_required
-def places_profile(request, places_profile_id):
-    places_profile = get_object_or_404(PlacesProfile, id=places_profile_id, user=request.user)
-    return render(request, 'profile_places.html', {'places_profile': places_profile})
-
-def logout_view(request):
-    logout(request)
-    return redirect('accounts:login')  
-
-
-
 # @login_required
 # def create_post(request):
+#     user = request.user.id
+    
 #     if request.method == 'POST':
 #         form = NewPostForm(request.POST, request.FILES)
+
 #         if form.is_valid():
-#             form.save()
-#             return redirect('detail_post')
+#             image = form.cleaned_data.get('image')
+#             description = form.cleaned_data.get('description')
+            
+#             p, created = Post.objects.get_or_create(image=image, description=description, user_id=user )
+#             p.save()
+            
+#             return redirect('userprofile')
 #     else:
 #         form = NewPostForm()
-#     return render(request, 'create_post.html', {'form': form})
+        
+#     context = {'form': form}
+#     return render(request, 'profile_user.html', context)
+
 
 
 
 # @login_required
-# def index(request):
-#     posts = Post.objects.filter(is_sold=False)[0:6]
-#     creaters = UserProfile.objects.all()
-#     return render(request, 'profile_user.html', {'creaters': creaters,'posts': posts,})
-
-# def post_user_list(request):
+# def home(request,):
+#     profile = get_object_or_404(UserProfile, user=request.user)
 #     post_user_list = Post.objects.all()
-#     context = {'posts':post_user_list} # tempate name
-#     return render(request, 'post_user_detail.html', context)
+#     context = {'profile':profile, 'posts':post_user_list} # tempate name
+#     return render(request, 'home.html', context)
 
-
-
+# @login_required
+# def home(request):
+#     user = request.user
+#     home = get_object_or_404(UserProfile, user=user)
+#     context = {'home': home,}
+#     return render(request, 'home.html', context)
 
 
 # @login_required
-# def user_ist(request, profile_id):
-#     field_user_profile = UserProfile.objects.get(user=request.user)
-#     context = {
-#         'field_user_profile': field_user_profile
-#     }   
-#     return redirect('profile_user.html') 
+# def home(request, home_id):
+#     home = get_object_or_404(UserProfile, id=home_id, user=request.user)
+#     context = {'home': home,}
+#     return render(request, 'home.html', context)
+
+@login_required
+def home(request):
+    profile = get_object_or_404(UserProfile, user=request.user)
+    post_list_all = list(Post.objects.all()) + list(PostPlaces.objects.all())
+    context = {'profile': profile, 'posts': post_list_all}
+    return render(request, 'home.html', context)
 
 
 
-# from django.contrib.auth import get_user
-
-
-# User = get_user(request)
-# field_user_profile = UserProfile.objects.get(user=User)
-# context = {
-#         'field_user_profile': field_user_profile
-#     }
-
-
-
-# @receiver(post_save, sender=User)
-# def create_or_save_profile(sender, instance, created, **kwargs):
-#     try:
-#         user_profile = UserProfile.objects.get(User=instance)
-#         user_profile.save()
-#     except UserProfile.DoesNotExist:
-#         UserProfile.objects.create(user=instance)
-
-#     try:
-#         places_profile = PlacesProfile.objects.get_or_create(User=instance)
-#         places_profile.save()
-#     except PlacesProfile.DoesNotExist:
-#         pass
-
-
-
-
-# def registeruser(request):
-#     if request.method == 'POST':
-#         form = RegisterUserForm(request.POST)
-#         user_profile_form = UserProfileForm(request.POST)
-#         if form.is_valid() and user_profile_form.is_valid():
-#             user = form.save(commit=False)
-#             user.set_password(form.cleaned_data['password1']) 
-#             user.save()
-#             user_profile = user_profile_form.save(commit=False)
-#             user_profile.user = user 
-#             user_profile.save()
-#             user_id = user.id  # Get the user ID
-#             # Create the user profile using the ID
-#             UserProfile.objects.create(user_id=user_id)
-#             username = form.cleaned_data.get('username')
-#             raw_password = form.cleaned_data.get('password1')
-#             user = authenticate(username=username, password=raw_password)
-#             if user is not None:
-#                 login(request, user)
-#                 return redirect('userprofile')
-#     else:
-#         form = RegisterUserForm()
-#         user_profile_form = UserProfileForm()
-#     return render(request, 'registeruser.html', {'form': form, 'user_profile_form' : user_profile_form})
-
-
-# def registerplaces(request):
-#     if request.method == 'POST':
-#         form = RegisterPlacesForm(request.POST)
-#         places_profile_form = PlacesProfileForm(request.POST)
-#         if form.is_valid() and places_profile_form.is_valid():
-#             user = form.save(commit=False)
-#             user.set_password(form.cleaned_data['password1']) 
-#             user.save()
-#             places_profile = places_profile_form.save(commit=False)
-#             places_profile.user = user 
-#             places_profile.save()
-#             places_id = user.id  # Get the user ID
-#             # Create the user profile using the ID
-#             UserProfile.objects.create(places_id=places_id)
-#         username = form.cleaned_data.get('username')
-#         raw_password = form.cleaned_data.get('password1')
-#         user = authenticate(username=username, password=raw_password)
-#         if user is not None:
-#             login(request, user)
-#             return redirect('placesprofile')
-#     else:
-#         form = RegisterPlacesForm()
-#         places_profile_form = PlacesProfileForm()
-#     return render(request, 'registerplaces.html', {'form': form, 'places_profile_form': places_profile_form})

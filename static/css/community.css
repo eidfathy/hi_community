@@ -1,0 +1,92 @@
+.col-md-7 * {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  height: 100%;
+  background-color: white;
+  padding: 2em;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.container .community-card {
+  height: 120px;
+  padding: 2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f3f5f7;
+  border-radius: 8px;
+}
+.container .community-card .community-image img {
+  height: 84px;
+  width: 84px;
+}
+.container .community-card .details {
+  margin-left: -14%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+.container .community-card .details p {
+  color: #929292;
+}
+.container .community-card .details .title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.container .community-card .details .title p {
+  margin-top: 5px;
+}
+.container .community-card .details .community-brief {
+  font-size: 14px;
+}
+.container .community-card .btn {
+  justify-self: flex-end;
+}
+.container .community-card .btn a {
+  padding: 8px 15px;
+  background: linear-gradient(90deg, #0565cb 0%, #0581f1 100%);
+  border-radius: 50px;
+  color: white;
+  text-decoration: none;
+}
+
+.com-ser-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.com-ser-form input {
+  padding: 1em;
+  border-radius: 10px !important;
+  background: #f3f5f7;
+}
+.com-ser-form input:focus {
+  background: #f3f5f7;
+}
+.com-ser-form button {
+  color: white;
+  padding: 1em;
+  outline: none;
+  border: none;
+  background: linear-gradient(90deg, #0565cb 0%, #0581f1 100%);
+  border-radius: 10px;
+}
+
+.btn-create {
+  width: 100%;
+  margin-top: 0.5em;
+  color: white;
+  padding: 1em;
+  outline: none;
+  border: none;
+  background: linear-gradient(90deg, #0565cb 0%, #0581f1 100%);
+  border-radius: 10px;
+}/*# sourceMappingURL=community.css.map */

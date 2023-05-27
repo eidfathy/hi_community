@@ -1,0 +1,277 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/community.css' %}" />
+    <title>MI Community</title>
+  </head>
+
+  <body>
+    <nav class="navbar">
+      <div class="container-fluid bg-white my-2 mx-3 rounded-3 p-3">
+        <div class="row align-items-center justify-content-between">
+          <div class="col-md-2 special" id="specialNav">
+            <div class="nav-brand">
+              <img
+                src="{% static 'img/HI LOGO 1.png' %}"
+                alt="Logo mi community"
+              />
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="search">
+              <input
+                type="search"
+                class="form-control rounded-pill"
+                id="SearchNav"
+                placeholder="search"
+              />
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div
+              class="profile-info d-flex gap-5 justify-content-end align-items-center"
+            >
+              <ul class="d-flex gap-4 align-items-center position-relative">
+                <li>
+                  <img
+                    src="{% static 'img/Add.png' %}"
+                    alt=""
+                    class="img-fluid"
+                  />
+                </li>
+                <li class="notifi" id="notifi">
+                  <div class="img d-flex align-items-center gap-2">
+                    <img
+                      src="{% static 'img/notifiction.png' %}"
+                      alt=""
+                      class="img-fluid"
+                    />
+                    <h3 class="fs-6 m-0 p-0">Notifictions</h3>
+                  </div>
+                </li>
+                <div class="notifi_wrapper">
+                  <div class="setting d-flex justify-content-between mb-3">
+                    <p class="p-0 m-0">new</p>
+                    <a href="#">read All</a>
+                  </div>
+                  <div class="notifiBox d-flex gap-3 align-items-center">
+                    <div class="img">
+                      <img
+                        src="{% static 'img/Group 2984.png' %}"
+                        alt=""
+                        class="img-fluid"
+                      />
+                    </div>
+                    <div class="info">
+                      <h4>
+                        Youssif Elhelaly,
+                        <span>added 26 new photos</span>
+                      </h4>
+                      <p>14 min</p>
+                    </div>
+                  </div>
+                </div>
+              </ul>
+              <div class="profileIMG">
+                <img
+                  src="{% static 'img/Group 2984.png' %}"
+                  alt="profile photo"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <section class="home p-2">
+      <div class="container-fluid">
+        <div class="row justify-content-between">
+          <div class="col-md-2 special" id="special">
+            <div class="leftSide bg-white p-4 rounded-3">
+              <div class="head mb-4">
+                <h3>Hi Community</h3>
+                <img
+                  src="{% static 'img/arrow-right-svgrepo-com 1.png' %}"
+                  alt="menu icon"
+                />
+              </div>
+              <ul class="d-flex flex-column justify-content-between">
+                <div class="upper d-flex flex-column gap-4">
+                  <li>
+                    <a class="leftSideOption" href="{% url 'accounts:home' %}"
+                      ><img src="{% static 'img/homeGray_.png' %}" alt="" />
+                      <span>Home</span></a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="{% url 'accounts:userprofile' profile_id=profile.id %}"
+                      class="leftSideOption"
+                      ><img src="{% static 'img/Icon.png' %}" alt="" /><span
+                        >Profile</span
+                      ></a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="leftSideOption"
+                      ><img src="{% static 'img/chat.png' %}" alt="" /><span
+                        >Chat</span
+                      ></a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="leftSideOption active"
+                      ><img
+                        src="{% static 'img/community.png' %}"
+                        alt=""
+                      /><span>Community</span></a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="leftSideOption"
+                      ><img src="{% static 'img/setting.png' %}" alt="" /><span
+                        >Setting</span
+                      ></a
+                    >
+                  </li>
+                </div>
+                <div class="down">
+                  <li>
+                    <a href="#" class="leftSideOption"
+                      ><img src="{% static 'img/logOut.png' %}" alt="" /><span
+                        >logout</span
+                      ></a
+                    >
+                  </li>
+                </div>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-7">
+            <div class="container">
+              {% for community in communitys %}
+              <div class="community-card">
+                <div class="community-image">
+                  <img src="{{ community.image.url }}" />
+                </div>
+                <div class="details">
+                  <div class="title">
+                    <h2>{{community.name_community}}</h2>
+                    <p>{{community.member_count}} members</p>
+                  </div>
+                  <p class="community-brief">{{ community.description }}</p>
+                </div>
+                <div class="btn">
+                  <a href="#">Join request</a>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="rightSide">
+              <div class="bg-white rounded-3 pb-3">
+                <h3 class="p-4 pb-0">Community</h3>
+                <form action="#" class="form px-4 com-ser-form">
+                  <input
+                    required
+                    type="text"
+                    class="form-control rounded-pill"
+                    id="title"
+                    placeholder="title"
+                  />
+                  <input
+                    required
+                    type="text"
+                    class="form-control rounded-pill"
+                    id="intersts"
+                    placeholder="interests"
+                  />
+                  <input
+                    required
+                    type="text"
+                    class="form-control rounded-pill"
+                    id="area"
+                    placeholder="area"
+                  />
+                  <button>search</button>
+                </form>
+              </div>
+              <div class="myCommunity_wrapper bg-white rounded-3 pb-3 mt-4">
+                <h4 class="p-3">My Community</h4>
+                <div class="community d-flex align-items-center gap-3 m-2">
+                  <div class="img">
+                    <img
+                      src="{% static 'img/logoFigma.png' %}"
+                      alt=""
+                      class="img-fluid"
+                    />
+                  </div>
+                  <h5>Figma Design Community</h5>
+                </div>
+                <div class="community d-flex align-items-center gap-3 m-2">
+                  <div class="img">
+                    <img
+                      src="{% static 'img/logoFigma.png' %}"
+                      alt=""
+                      class="img-fluid"
+                    />
+                  </div>
+                  <h5>Figma Design Community</h5>
+                </div>
+                <div class="community d-flex align-items-center gap-3 m-2">
+                  <div class="img">
+                    <img
+                      src="{% static 'img/logoFigma.png' %}"
+                      alt=""
+                      class="img-fluid"
+                    />
+                  </div>
+                  <h5>Figma Design Community</h5>
+                </div>
+                <div class="community d-flex align-items-center gap-3 m-2">
+                  <div class="img">
+                    <img
+                      src="{% static 'img/logoFigma.png' %}"
+                      alt=""
+                      class="img-fluid"
+                    />
+                  </div>
+                  <h5>Figma Design Community</h5>
+                </div>
+                <div class="community d-flex align-items-center gap-3 m-2">
+                  <div class="img">
+                    <img
+                      src="{% static 'img/logoFigma.png' %}"
+                      alt=""
+                      class="img-fluid"
+                    />
+                  </div>
+                  <h5>Figma Design Community</h5>
+                </div>
+              </div>
+              <button class="btn-create">Create a community</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+  </body>
+</html>
