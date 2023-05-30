@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/chat.css" />
+    <title>MI Community</title>
+  </head>
+
+  <body>
+    <nav class="navbar">
+      <div class="container-fluid bg-white my-2 mx-3 rounded-3 p-3">
+        <div class="row align-items-center justify-content-between">
+          <div class="col-md-2 special">
+            <div class="nav-brand">
+              <img
+                src="./assets/img/HI LOGO 1.png"
+                alt="Logo mi community"
+              />
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="search profile">
+              <input
+                type="search"
+                class="form-control rounded-pill"
+                id="SearchNav"
+                placeholder="search"
+              />
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div
+              class="profile-info d-flex gap-5 justify-content-end align-items-center"
+            >
+              <ul
+                class="d-flex gap-4 align-items-center position-relative"
+              >
+                <li>
+                  <img
+                    src="./assets/img/Add.png"
+                    alt=""
+                    class="img-fluid"
+                  />
+                </li>
+                <li class="notifi" id="notifi">
+                  <div class="img d-flex align-items-center gap-2">
+                    <img
+                      src="./assets/img/notifiction.png"
+                      alt=""
+                      class="img-fluid"
+                    />
+                    <h3 class="fs-6 m-0 p-0">Notifictions</h3>
+                    <span class="num">10</span>
+                  </div>
+                </li>
+                <div class="notifi_wrapper">
+                  <div
+                    class="setting d-flex justify-content-between mb-3"
+                  >
+                    <p class="p-0 m-0">new</p>
+                    <a href="#">read All</a>
+                  </div>
+                  <div
+                    class="notifiBox d-flex gap-3 align-items-center"
+                  >
+                    <div class="img">
+                      <img
+                        src="./assets/img/Group 2984.png"
+                        alt=""
+                        class="img-fluid"
+                      />
+                    </div>
+                    <div class="info">
+                      <h4>
+                        Youssif Elhelaly,
+                        <span>added 26 new photos</span>
+                      </h4>
+                      <p>14 min</p>
+                    </div>
+                  </div>
+                </div>
+              </ul>
+              <div class="profileIMG">
+                <img
+                  src="./assets/img/Group 2984.png"
+                  alt="profile photo"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <section class="profile home p-2">
+      <div class="container-fluid">
+        <div class="row flex-nowrap">
+          <div class="col-md-2 special" id="special">
+            <div class="leftSide bg-white p-4 rounded-3">
+              <div class="head mb-4">
+                <h3>Hi Community</h3>
+                <img
+                  src="./assets/img/arrow-right-svgrepo-com 1.png"
+                  alt="menu icon"
+                />
+              </div>
+              <ul class="d-flex flex-column justify-content-between">
+                <div class="upper d-flex flex-column gap-4">
+                  <li>
+                    <a class="leftSideOption" href="#"
+                      ><img src="./assets/img/home-icon.svg" alt="" />
+                      <span>Home</span></a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="leftSideOption"
+                      ><img
+                        src="./assets/img/profile.svg"
+                        alt=""
+                      /><span>Profile</span></a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="leftSideOption active"
+                      ><img src="./assets/img/chat.svg" alt="" /><span
+                        >Chat</span
+                      ></a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="leftSideOption"
+                      ><img
+                        src="./assets/img/community.png"
+                        alt=""
+                      /><span>Community</span></a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="leftSideOption"
+                      ><img
+                        src="./assets/img/setting.png"
+                        alt=""
+                      /><span>Setting</span></a
+                    >
+                  </li>
+                </div>
+                <div class="down">
+                  <li>
+                    <a href="#" class="leftSideOption"
+                      ><img
+                        src="./assets/img/logOut.png"
+                        alt=""
+                      /><span>logout</span></a
+                    >
+                  </li>
+                </div>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-10">
+            <div class="chat-container">
+              <div class="left-col">
+                <div class="chat bg-white rounded-3 pb-3">
+                  <h3 class="p-4 pb-0">Chat</h3>
+                  <form action="#" class="form px-4">
+                    <input
+                      type="search"
+                      class="form-control rounded-pill"
+                      id="SearchNav"
+                      placeholder="search"
+                    />
+                  </form>
+                  <ul
+                    class="d-flex justify-content-between my-3 mx-4"
+                  >
+                    <div class="sort d-flex gap-3">
+                      <li class="active">Pepole</li>
+                      <li>Community</li>
+                    </div>
+                    <a href="#">Requests</a>
+                  </ul>
+                  <div class="friend_wrapper mt-3">
+                    <div
+                      class="friend d-flex gap-3 align-items-center m-1"
+                    >
+                      <div class="img">
+                        <img
+                          src="./assets/img/Group 2984.png"
+                          class="img-fluid"
+                          alt=""
+                        />
+                      </div>
+                      <div class="info">
+                        <h4>
+                          Eid Fathy <span class="online"></span>
+                        </h4>
+                        <p>Lorem ipsum</p>
+                      </div>
+                    </div>
+                    <div
+                      class="friend d-flex gap-3 align-items-center m-1"
+                    >
+                      <div class="img">
+                        <img
+                          src="./assets/img/Group 2984.png"
+                          class="img-fluid"
+                          alt=""
+                        />
+                      </div>
+                      <div class="info">
+                        <h4>
+                          Eid Fathy <span class="online"></span>
+                        </h4>
+                        <p>Lorem ipsum</p>
+                      </div>
+                    </div>
+                    <div
+                      class="friend d-flex gap-3 align-items-center m-1"
+                    >
+                      <div class="img">
+                        <img
+                          src="./assets/img/Group 2984.png"
+                          class="img-fluid"
+                          alt=""
+                        />
+                      </div>
+                      <div class="info">
+                        <h4>
+                          Eid Fathy <span class="online"></span>
+                        </h4>
+                        <p>Lorem ipsum</p>
+                      </div>
+                    </div>
+                    <div
+                      class="friend d-flex gap-3 align-items-center m-1"
+                    >
+                      <div class="img">
+                        <img
+                          src="./assets/img/Group 2984.png"
+                          class="img-fluid"
+                          alt=""
+                        />
+                      </div>
+                      <div class="info">
+                        <h4>
+                          Eid Fathy <span class="online"></span>
+                        </h4>
+                        <p>Lorem ipsum</p>
+                      </div>
+                    </div>
+                    <div
+                      class="friend d-flex gap-3 align-items-center m-1"
+                    >
+                      <div class="img">
+                        <img
+                          src="./assets/img/Group 2984.png"
+                          class="img-fluid"
+                          alt=""
+                        />
+                      </div>
+                      <div class="info">
+                        <h4>
+                          Eid Fathy <span class="online"></span>
+                        </h4>
+                        <p>Lorem ipsum</p>
+                      </div>
+                    </div>
+                    <div
+                      class="friend d-flex gap-3 align-items-center m-1"
+                    >
+                      <div class="img">
+                        <img
+                          src="./assets/img/Group 2984.png"
+                          class="img-fluid"
+                          alt=""
+                        />
+                      </div>
+                      <div class="info">
+                        <h4>
+                          Eid Fathy <span class="online"></span>
+                        </h4>
+                        <p>Lorem ipsum</p>
+                      </div>
+                    </div>
+                    <div
+                      class="friend d-flex gap-3 align-items-center m-1"
+                    >
+                      <div class="img">
+                        <img
+                          src="./assets/img/Group 2984.png"
+                          class="img-fluid"
+                          alt=""
+                        />
+                      </div>
+                      <div class="info">
+                        <h4>
+                          Eid Fathy <span class="online"></span>
+                        </h4>
+                        <p>Lorem ipsum</p>
+                      </div>
+                    </div>
+                    <div
+                      class="friend d-flex gap-3 align-items-center m-1"
+                    >
+                      <div class="img">
+                        <img
+                          src="./assets/img/Group 2984.png"
+                          class="img-fluid"
+                          alt=""
+                        />
+                      </div>
+                      <div class="info">
+                        <h4>
+                          Eid Fathy <span class="online"></span>
+                        </h4>
+                        <p>Lorem ipsum</p>
+                      </div>
+                    </div>
+                    <div
+                      class="friend d-flex gap-3 align-items-center m-1"
+                    >
+                      <div class="img">
+                        <img
+                          src="./assets/img/Group 2984.png"
+                          class="img-fluid"
+                          alt=""
+                        />
+                      </div>
+                      <div class="info">
+                        <h4>
+                          Eid Fathy <span class="online"></span>
+                        </h4>
+                        <p>Lorem ipsum</p>
+                      </div>
+                    </div>
+                    <div
+                      class="friend d-flex gap-3 align-items-center m-1"
+                    >
+                      <div class="img">
+                        <img
+                          src="./assets/img/Group 2984.png"
+                          class="img-fluid"
+                          alt=""
+                        />
+                      </div>
+                      <div class="info">
+                        <h4>
+                          Eid Fathy <span class="online"></span>
+                        </h4>
+                        <p>Lorem ipsum</p>
+                      </div>
+                    </div>
+                    <div
+                      class="friend d-flex gap-3 align-items-center m-1"
+                    >
+                      <div class="img">
+                        <img
+                          src="./assets/img/Group 2984.png"
+                          class="img-fluid"
+                          alt=""
+                        />
+                      </div>
+                      <div class="info">
+                        <h4>
+                          Eid Fathy <span class="online"></span>
+                        </h4>
+                        <p>Lorem ipsum</p>
+                      </div>
+                    </div>
+                    <div
+                      class="friend d-flex gap-3 align-items-center m-1"
+                    >
+                      <div class="img">
+                        <img
+                          src="./assets/img/Group 2984.png"
+                          class="img-fluid"
+                          alt=""
+                        />
+                      </div>
+                      <div class="info">
+                        <h4>
+                          Eid Fathy <span class="online"></span>
+                        </h4>
+                        <p>Lorem ipsum</p>
+                      </div>
+                    </div>
+                    <div
+                      class="friend d-flex gap-3 align-items-center m-1"
+                    >
+                      <div class="img">
+                        <img
+                          src="./assets/img/Group 2984.png"
+                          class="img-fluid"
+                          alt=""
+                        />
+                      </div>
+                      <div class="info">
+                        <h4>
+                          Youssif Elhelaly
+                          <span class="offline"></span>
+                        </h4>
+                        <p>
+                          Lorem ipsum dolor sit amet consectetur
+                          adipisicing elit. Cum atque tempora velit
+                          soluta fuga reprehenderit nostrum corrupti
+                          natus consequatur. Unde dolor perspiciatis
+                          velit id sequi ab quos odio tenetur totam.
+                        </p>
+                      </div>
+                    </div>
+                    <div
+                      class="friend d-flex gap-3 align-items-center m-1"
+                    >
+                      <div class="img">
+                        <img
+                          src="./assets/img/Group 2984.png"
+                          class="img-fluid"
+                          alt=""
+                        />
+                      </div>
+                      <div class="info">
+                        <h4>
+                          Eid Fathy <span class="online"></span>
+                        </h4>
+                        <p>Lorem ipsum</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="right-col">
+                <div class="header">
+                  <div class="contact">
+                    <img src="./assets/img/ProfileIMG.png" />
+                    <div class="contact-info">
+                      <h3>Eid Fathy</h3>
+                      <p>Lost seen 3 hours ago</p>
+                    </div>
+                  </div>
+                  <div class="settings">
+                    <img src="./assets/img/dots.svg" alt="" />
+                  </div>
+                </div>
+                <div class="chat-body">
+                  <div class="bubble left">Hey, How are you?</div>
+                  <div class="bubble right">
+                    I am fine, How about you?
+                  </div>
+                  <div class="bubble left">
+                    I was asking for your New Year Plans, ask we are
+                    going to host a party.
+                  </div>
+                  <div class="bubble right">
+                    In front of the Bar, about which we had a call!
+                  </div>
+                  <div class="bubble left">Hey, How are you?</div>
+                  <div class="bubble right">
+                    I am fine, How about you?
+                  </div>
+                  <div class="bubble left">
+                    I was asking for your New Year Plans, ask we are
+                    going to host a party.
+                  </div>
+                  <div class="bubble right">
+                    In front of the Bar, about which we had a call!
+                  </div>
+                </div>
+                <div class="chat-send">
+                  <div class="input">
+                    <input
+                      type="text"
+                      placeholder="Type a message here...."
+                    />
+
+                    <img
+                      src="./assets/img/emoji.svg"
+                      class="emoji"
+                      alt=""
+                    />
+                    <img
+                      src="./assets/img/clip.svg"
+                      class="clip"
+                      alt=""
+                    />
+                    <img
+                      src="./assets/img/mic.svg"
+                      class="mic"
+                      alt=""
+                    />
+                    <img
+                      src="./assets/img/send.svg"
+                      class="send"
+                      alt=""
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="./assets/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/js/script.js"></script>
+  </body>
+</html>
