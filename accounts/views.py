@@ -21,6 +21,8 @@ def register(request):
     return render(request, 'register.html', {})
 
 
+
+
 def registeruser(request):
     if request.method == 'POST':
         form = RegisterUserForm(request.POST)
@@ -43,6 +45,8 @@ def registeruser(request):
         user_profile_form = UserProfileForm()
     return render(request, 'registeruser.html', {'form': form, 'user_profile_form' : user_profile_form})
 
+# def registeruser2(request):
+#     return render(request, 'registeruser2.html', {})
 
 def registerplaces(request):
     if request.method == 'POST':
@@ -139,5 +143,11 @@ def home(request):
     context = {'profile': profile, 'posts': post_list_all}
     return render(request, 'home.html', context)
 
+@login_required
+def homeplaces(request):
+    places_profile = get_object_or_404(PlacesProfile, user=request.user)
+    post_places_list = PostPlaces.objects.all()
+    context = {'places_profile': places_profile, 'postsplaces': post_places_list}
+    return render(request, 'homeplaces.html', context)
 
 

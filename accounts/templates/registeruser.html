@@ -1,96 +1,154 @@
 
 <!DOCTYPE html>
 <html>
-<head>
-  <title>تسجيل الدخول</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    /* تحديد نمط الحقول */
-    .form-group {
-      margin-bottom: 1rem;
-    }
+  <head>
+    <title>تسجيل الدخول</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      /* تحديد نمط الحقول */
+      .form-group {
+        margin-bottom: 1rem;
+      }
 
-    /* تحديد نمط التسمية */
-    label {
-      display: block;
-      margin-bottom: 0.5rem;
-      font-weight: bold;
-    }
+      /* تحديد نمط التسمية */
+      label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+      }
 
-    /* تحديد نمط حقل الإدخال */
-    input {
-      padding: 0.5rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      width: 100%;
-      box-sizing: border-box;
-    }
+      /* تحديد نمط حقل الإدخال */
+      input {
+        padding: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 100%;
+        box-sizing: border-box;
+      }
 
-    /* تحديد نمط زر الإرسال */
-    button[type="submit"] {
-      background-color: #4CAF50;
-			border: none;
-			color: white;
-			padding: 10px;
-			text-align: center;
-			text-decoration: none;
-			display: inline-block;
-			font-size: 16px;
-			border-radius: 5px;
-			width: 100%;
-			cursor: pointer;
-    }
+      /* تحديد نمط زر الإرسال */
+      button[type="submit"] {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 5px;
+        width: 100%;
+        cursor: pointer;
+      }
 
-    button[type="submit"]:hover {
-      background-color: #0069d9;
-    }
+      button[type="submit"]:hover {
+        background-color: #0069d9;
+      }
 
-    /* تحديد نمط العنوان */
-    h1 {
-      text-align: center;
-      margin-top: 2rem;
-    }
+      /* تحديد نمط العنوان */
+      h1 {
+        text-align: center;
+        margin-top: 2rem;
+      }
 
-    /* تحديد نمط النموذج */
-    form {
-      max-width: 400px;
-      margin: auto;
-    }
-    input[type="text"], input[type="password"] {
-			border: 1px solid #ccc;
-			border-radius: 5px;
-			padding: 10px;
-			width: 100%;
-			margin-bottom: 10px;
-		}
-		input[type="submit"] {
-			background-color: #4CAF50;
-			border: none;
-			color: white;
-			padding: 10px;
-			text-align: center;
-			text-decoration: none;
-			display: inline-block;
-			font-size: 16px;
-			border-radius: 5px;
-			width: 100%;
-			cursor: pointer;
-		}
-		input[type="submit"]:hover {
-			background-color: #3e8e41;
-		}
-  </style>
-</head>
-<body>
-  <!-- النموذج -->
-  <h1> Register User </h1>
-  <form method="post">
-    {% csrf_token %}
-    {{ form }}
-    {{user_profile_form}}
-    
-    <button type="submit">Register</button>
-  </form>
-</body>
+      /* تحديد نمط النموذج */
+      form {
+        max-width: 400px;
+        margin: auto;
+      }
+      input[type="text"], input[type="password"] {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        width: 100%;
+        margin-bottom: 10px;
+      }
+      input[type="submit"] {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 5px;
+        width: 100%;
+        cursor: pointer;
+      }
+      input[type="submit"]:hover {
+        background-color: #3e8e41;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- النموذج -->
+    <h1> Register User </h1>
+    <form method="post">
+      {% csrf_token %}
+      {{ form }}
+      {{user_profile_form}}
+      
+      <button type="submit">Register</button>
+    </form>
+  </body>
 </html>
+
+{% load static %}
+
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hi</title>
+    <link rel="stylesheet" href="{% static 'css/signing.css' %}" />
+
+    <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-container" id="form-2">
+            <div class="title" style="margin: 0;">
+                <h1>Welcome to Hi Community</h1>
+                <h2>Register you account</h2>
+            </div>
+            <form method="post">
+              {% csrf_token %}
+              {{form.username}}
+              {{form.email}}
+              {{form.first_name}}
+              {{form.last_name}}
+              {{form.password1}}
+              {{form.password2}}
+
+              {{user_profile_form.phone_number}}
+              {{user_profile_form.birth_day}}
+              {{user_profile_form.type}}
+              {{user_profile_form.address}}
+              {{user_profile_form.country}}
+              {{user_profile_form.area}}
+              {{user_profile_form.education}}
+              {{user_profile_form.job_tite}}
+              {{user_profile_form.interest}}
+              
+              <button type="submit">Register</button>
+            </form>
+            <hr />
+        </div>
+        <div class="image">
+            <img class="img" src="{% static 'img/form-2.png' %}" alt="" />
+        </div>
+    </div>
+
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/signing.js' %}"></script>
+</body>
+
+</html> {% endcomment %}
