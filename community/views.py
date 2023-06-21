@@ -1,15 +1,7 @@
-from django.shortcuts import render
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from accounts.models import UserProfile
 from .models import Community
-# Create your views here.
-
-# @login_required
-# def community(request, profile_id):
-#     profile = get_object_or_404(Community, user=request.user, id=profile_id)
-#     context = {'profile': profile, }
-#     return render(request, 'community.html', context)
 
 @login_required
 def community(request):
@@ -27,7 +19,7 @@ def community(request):
     return render(request, 'community.html', context)
 
 
-# def create_group(request):
+# def create_community(request):
 #     if request.method == 'POST':
 #         form = GroupForm(request.POST)
 #         if form.is_valid():
@@ -40,5 +32,5 @@ def community(request):
 #         form = GroupForm()
     
 #     context = {'form': form}
-#     return render(request, 'create_group.html', context)
+#     return render(request, 'create_community.html', context)
 

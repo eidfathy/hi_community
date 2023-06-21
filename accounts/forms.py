@@ -93,28 +93,4 @@ class NewPostForm(forms.ModelForm):
         }
     description = forms.CharField(label='CreatePost', max_length=100, widget=forms.TextInput(attrs={'class': 'form-control rounded-pill'}))
 
-# class NewPostForm(forms.ModelForm):
-#     description = forms.CharField(
-#         label='CreatePost',
-#         max_length=100,
-#         widget=forms.TextInput(attrs={'class': 'form-control rounded-pill createPost bg-white rounded-3 p-4 mb-3'})
-#     )
-
-#     class Meta:
-#         model = Post
-#         fields = ['description', 'image']
-#         widgets = {
-#             'image': forms.FileInput(attrs={'class': 'createPost bg-white rounded-3 p-4 mb-3'})
-#         }
-
-
-
-# class NewPostForm(forms.ModelForm):
-#     description = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control rounded-pill'}), required=True)
-#     image = forms.ImageField(required=True)
-
-#     class Meta:
-#         model = Post
-#         fields = ['description', 'image']
-
 

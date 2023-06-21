@@ -25,11 +25,9 @@ class User(AbstractUser):
     def __str__(self) -> str:
         return self.username 
 
-# # #####################################################
-# # #####################################################
 from django.utils.text import slugify
 
-class Interest(models.Model):
+class InterestUser(models.Model):
 	title = models.CharField(max_length=75, verbose_name='interest')
 	slug = models.SlugField(null=False, unique=True)
 
@@ -48,6 +46,24 @@ class Interest(models.Model):
 			self.slug = slugify(self.title)
 		return super().save(*args, **kwargs)
 
+class InterestPlaces(models.Model):
+	title = models.CharField(max_length=75, verbose_name='interest')
+	slug = models.SlugField(null=False, unique=True)
+
+	class Meta:
+		verbose_name='interest'
+		verbose_name_plural = 'interests'
+
+	def get_absolute_url(self):
+		return reverse('interests', args=[self.slug])
+		
+	def __str__(self):
+		return self.title
+
+	def save(self, *args, **kwargs):
+		if not self.slug:
+			self.slug = slugify(self.title)
+		return super().save(*args, **kwargs)
 
 GENDER_CHOICES = [
     ('Male','Male'),
@@ -73,15 +89,12 @@ class UserProfile(models.Model):
     education = models.CharField(max_length=30,)
     job_tite = models.CharField(max_length=15,)
     about_me = models.TextField(max_length=1000, null=True,)
-    #interests
     published_at = models.DateTimeField(auto_now=True)
-    interest = models.ManyToManyField(Interest, related_name='interests')
+    interest = models.ManyToManyField(InterestUser, related_name='interests')
     
     def __str__(self) -> str:
         return self.user.username if self.user else 'No User'
 
-# # # ################################################
-# # # ################################################
 
 def image_places(instance,filename):
     imgename , extension = filename.split(".", 1)
@@ -99,7 +112,7 @@ class PlacesProfile(models.Model):
     country = models.CharField(max_length=15,)
     area = models.CharField(max_length=10,)
     sarves = models.CharField(max_length=150,)
-    #interests
+    interest = models.ManyToManyField(InterestPlaces, related_name='interests')
     about_me = models.TextField(max_length=1000)
     published_at = models.DateTimeField(auto_now=True)
     facebook = models.CharField(max_length=30,null=True)
@@ -109,9 +122,6 @@ class PlacesProfile(models.Model):
         return self.user.username if self.user else 'No User'
 
 
-
-#######################################################
-#######################################################
 
 # create new user ---> create new empty profile
 # @receiver(post_save, sender=User)

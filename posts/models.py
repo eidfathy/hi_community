@@ -22,7 +22,6 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse('post-detail', kwargs={'pk': self.pk})
 
-
 class Comments(models.Model):
     post = models.ForeignKey(Post, related_name='details', on_delete=models.CASCADE)
     creater = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name="createdcomment")
@@ -38,9 +37,6 @@ class Like(models.Model):
     
     def __str__(self):
         return f"{str(self.creater)}  Like In Post=> {str(self.post)}"
-    
-
-
 
 class PostPlaces(models.Model):
     creater = models.ForeignKey(PlacesProfile, on_delete=models.CASCADE, related_name="createdpost")

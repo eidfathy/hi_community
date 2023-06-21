@@ -94,23 +94,12 @@ def custom_login(request):
     return render(request, 'login.html', {'form': form})
 
 
-
-
 @login_required
 def user_profile(request, profile_id):
     profile = get_object_or_404(UserProfile, id=profile_id, user=request.user)
     post_user_list = Post.objects.all()
     context = {'profile':profile, 'posts':post_user_list} # tempate name
     return render(request, 'profile_user.html', context)
-
-
-
-# @login_required
-# def user_profile(request, profile_id):
-#     profile = get_object_or_404(UserProfile, user=request.user, id=profile_id)
-#     post_user_list = Post.objects.filter(creater=profile.user)
-#     context = {'profile': profile, 'posts': post_user_list}
-#     return render(request, 'profile_user.html', context)
 
 
 @login_required
@@ -124,7 +113,6 @@ def places_profile(request, places_profile_id):
 def logout_view(request):
     logout(request)
     return redirect('accounts:login')  
-
 
 
 @login_required
@@ -143,50 +131,6 @@ def create_post(request):
     context = {'form': form}
     return render(request, 'profile_user.html', context)
 
-# @login_required
-# def create_post(request):
-#     user = request.user.id
-    
-#     if request.method == 'POST':
-#         form = NewPostForm(request.POST, request.FILES)
-
-#         if form.is_valid():
-#             image = form.cleaned_data.get('image')
-#             description = form.cleaned_data.get('description')
-            
-#             p, created = Post.objects.get_or_create(image=image, description=description, user_id=user )
-#             p.save()
-            
-#             return redirect('userprofile')
-#     else:
-#         form = NewPostForm()
-        
-#     context = {'form': form}
-#     return render(request, 'profile_user.html', context)
-
-
-
-
-# @login_required
-# def home(request,):
-#     profile = get_object_or_404(UserProfile, user=request.user)
-#     post_user_list = Post.objects.all()
-#     context = {'profile':profile, 'posts':post_user_list} # tempate name
-#     return render(request, 'home.html', context)
-
-# @login_required
-# def home(request):
-#     user = request.user
-#     home = get_object_or_404(UserProfile, user=user)
-#     context = {'home': home,}
-#     return render(request, 'home.html', context)
-
-
-# @login_required
-# def home(request, home_id):
-#     home = get_object_or_404(UserProfile, id=home_id, user=request.user)
-#     context = {'home': home,}
-#     return render(request, 'home.html', context)
 
 @login_required
 def home(request):
