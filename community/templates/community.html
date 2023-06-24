@@ -128,7 +128,7 @@
                   <p class="community-brief">{{ community.description }}</p>
                 </div>
                 <div class="btn">
-                  <a href="">Join request</a>
+                  <a href="{% url 'community:communityprofile' community_id=community.id %}">Join request</a>
                 </div>
               </div> {% endfor %} </div>
           </div>

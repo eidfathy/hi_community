@@ -306,7 +306,7 @@
                                         <img src="{% static 'img/Group 2984.png' %}" class="img-fluid" alt="">
                                     </div>
                                     <div class="info">
-                                        <h4>Youssif Elhelaly <span class="offline"></span></h4>
+                                        <h4>Mohamed Fathy <span class="offline"></span></h4>
                                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum atque tempora
                                             velit
                                             soluta fuga reprehenderit nostrum corrupti natus consequatur. Unde dolor
@@ -326,7 +326,13 @@
                         </div>
                         <div class="myCommunity_wrapper bg-white rounded-3 pb-3 mt-4">
                             <h4 class="p-3">My Community</h4>
+                            {% for community in community %}
                             <div class="community d-flex align-items-center gap-3 m-2">
+                                <div class="img"><img src="{{ community.image.url }}" alt="" class="img-fluid"></div>
+                                <h5>{{community.name_community}}</h5>
+                            </div>
+                            {% endfor %} 
+                            {% comment %} <div class="community d-flex align-items-center gap-3 m-2">
                                 <div class="img"><img src="{% static 'img/logoFigma.png' %}" alt="" class="img-fluid"></div>
                                 <h5>Figma Design Community</h5>
                             </div>
@@ -341,11 +347,7 @@
                             <div class="community d-flex align-items-center gap-3 m-2">
                                 <div class="img"><img src="{% static 'img/logoFigma.png' %}" alt="" class="img-fluid"></div>
                                 <h5>Figma Design Community</h5>
-                            </div>
-                            <div class="community d-flex align-items-center gap-3 m-2">
-                                <div class="img"><img src="{% static 'img/logoFigma.png' %}" alt="" class="img-fluid"></div>
-                                <h5>Figma Design Community</h5>
-                            </div>
+                            </div> {% endcomment %}
                         </div>
                     </div>
 

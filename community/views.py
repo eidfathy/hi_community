@@ -16,26 +16,27 @@ def community(request):
     }
     return render(request, 'community.html', context)
 
-@login_required
-def community_profile(request, community_id):
-    community = get_object_or_404(Community, id=community_id)
-    context = {'community': community}
-    return render(request, 'community_profile.html', context)
-
 
 def create_community(request):
     if request.method == 'POST':
-        form = CommunityForm(request.POST)
+        form = CommunityForm(request.POST, request.FILES)
         if form.is_valid():
             community = form.save(commit=False)
-            community.creator = request.user
+            community.creator = request.user.userprofile 
             community.save()
-            community.members.add(request.user)
-            return redirect('community_profile', community_id=community.id)
+            return redirect('community-profile', community_id=community.id)
     else:
         form = CommunityForm()
     
     context = {'form': form}
     return render(request, 'create_community.html', context)
+
+
+@login_required
+def community_profile(request, community_id):
+    community = get_object_or_404(Community, id=community_id, )
+    context = {"community":community} 
+    return render(request, 'profile_community.html', context)
+
 
 

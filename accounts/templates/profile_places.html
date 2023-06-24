@@ -48,7 +48,7 @@
                         <img src="{% static 'img/Group 2984.png' %}" alt="" class="img-fluid" />
                         </div>
                         <div class="info">
-                        <h4> Youssif Elhelaly, <span>added 26 new photos</span>
+                        <h4> Eid Fathy, <span>added 26 new photos</span>
                         </h4>
                         <p>14 min</p>
                         </div>
@@ -193,12 +193,12 @@
                             </div>
                         </div>
                         <div class="interst_wrapper d-flex gap-2 flex-wrap">
-                            {% for interest in interests %}
+                            {% for interest in places_profile.interest.all %}
                             <div class="interst red">
-                                {{ places_profile.interest }}
+                                {{ interest }}
                             </div>
                             {% endfor %}
-                            <div class="interst green">
+                            {% comment %} <div class="interst green">
                                 html
                             </div>
                             <div class="interst mov">
@@ -212,7 +212,7 @@
                             </div>
                             <div class="interst mov">
                                 React
-                            </div>
+                            </div> {% endcomment %}
                         </div>
                         </div>
                     </div>
@@ -286,7 +286,7 @@
                             </div>
                         </form>
                         <div class="posts_wrapper">
-                            {% for post in postsplaces reversed  %}
+                            {% for post in postcommunity reversed  %}
                             <div class="post bg-white rounded-3 mb-5">
                                 <div class="headPost d-flex justify-content-between">
                                     <div class="info d-flex">

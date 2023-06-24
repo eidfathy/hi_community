@@ -85,18 +85,18 @@
 
                                 <li><a class="leftSideOption" href="{% url 'accounts:home' %}"><img src="{% static 'img/homeGray_.png' %}" alt="">
                                         <span>Home</span></a></li>
-                                <li><a href="{% url 'accounts:userprofile' profile_id=profile.id %}" class="leftSideOption active"><img src="{% static 'img/profileWhite.png' %}"
+                                <li><a href="#" class="leftSideOption active"><img src="{% static 'img/profileWhite.png' %}"
                                             alt=""><span>Profile</span></a></li>
                                 <li><a href="#" class="leftSideOption"><img src="{% static 'img/chat.png' %}"
                                             alt=""><span>Chat</span></a></li>
-                                <li><a href="#" class="leftSideOption"><img src="{% static 'img/community.png' %}"
+                                <li><a href="{% url 'community:community' %}" class="leftSideOption"><img src="{% static 'img/community.png' %}"
                                             alt=""><span>Community</span></a>
                                 </li>
                                 <li><a href="#" class="leftSideOption"><img src="{% static 'img/setting.png' %}"
                                             alt=""><span>Setting</span></a></li>
                             </div>
                             <div class="down">
-                                <li><a href="#" class="leftSideOption"><img src="{% static 'img/logOut.png' %}"
+                                <li><a href="{% url 'accounts:logout' %}" class="leftSideOption"><img src="{% static 'img/logOut.png' %}"
                                             alt=""><span>logout</span></a>
                                 </li>
                             </div>
@@ -114,8 +114,8 @@
                                     <img src="{% static 'img/figma.png' %}" alt="profile">
                                 </div>
                                 <div class="name">
-                                    <h2>Figma Design Community</h2>
-                                    <p>@figma_design_community</p>
+                                    <h2>{{community.name_community}}</h2>
+                                    <p>@{{community.username}}</p>
                                 </div>
                             </div>
                             <div class="buttons me-3 d-flex gap-3">
@@ -143,10 +143,13 @@
                                             </div>
                                         </div>
                                         <div class="interst_wrapper d-flex gap-2 flex-wrap">
+                                            {% for interest in community.interest.all %}
                                             <div class="interst red">
-                                                food
+                                                {{ interest }}
                                             </div>
-                                            <div class="interst green">
+                                            {% endfor %}
+
+                                            {% comment %} <div class="interst green">
                                                 fast food
                                             </div>
                                             <div class="interst mov">
@@ -160,7 +163,7 @@
                                             </div>
                                             <div class="interst mov">
                                                 React
-                                            </div>
+                                            </div> {% endcomment %}
                                         </div>
                                     </div>
                                     <div class="members bg-white mt-3">
@@ -177,13 +180,16 @@
                                             </div>
                                         </div>
                                         <div class="members_wrapper d-flex gap-2 flex-wrap">
+                                            {% for members in community.members.all %}
                                             <div class="member">
                                                 <div class="img">
                                                     <img src="{% static 'img/Rectangle 317.png' %}" alt="">
+                                                    {% comment %} {{ members.image.url }} {% endcomment %}
                                                 </div>
-                                                <h2>Eid Fathy</h2>
+                                                {{members.user.username}}
+                                            {% endfor %}
                                             </div>
-                                            <div class="member">
+                                            {% comment %} <div class="member">
                                                 <div class="img">
                                                     <img src="{% static 'img/Rectangle 317.png' %}" alt="">
                                                 </div>
@@ -200,7 +206,7 @@
                                                     <img src="{% static 'img/Rectangle 317.png' %}" alt="">
                                                 </div>
                                                 <h2>Amr Mohamed</h2>
-                                            </div>
+                                            </div> {% endcomment %}
                                             <div class="more">+55</div>
                                         </div>
                                     </div>
@@ -221,13 +227,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed aliquam
-                                            consequuntur nisi sequi possimus distinctio, assumenda alias totam soluta
-                                            numquam voluptates ea, repellat repudiandae, consectetur ex quisquam
-                                            obcaecati quibusdam sit! Lorem ipsum dolor sit amet consectetur adipisicing
-                                            elit. Aliquam corrupti dicta voluptatem pariatur magnam distinctio fugit
-                                            exercitationem. Ratione totam, aperiam fugit eius molestiae, amet quo
-                                            reprehenderit veniam tempora impedit ad.</p>
+                                        <p>{{community.description}}</p>
                                     </div>
 
                                     <div class="posts_wrapper">

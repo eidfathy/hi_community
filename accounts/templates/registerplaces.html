@@ -1,4 +1,5 @@
-
+{% load static %}
+{% comment %} 
 <!DOCTYPE html>
 <html>
   <head>
@@ -91,6 +92,97 @@
       <button type="submit">Register</button>
     </form>
   </body>
-</html>
+</html> {% endcomment %}
 
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Hi</title>
+    <link rel="stylesheet" href="{% static 'style/signing.css' %}" />
 
+    <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="image">
+        <img class="img" src="{% static 'assets/form-1.png' %}" alt="" />
+      </div>
+
+      <div class="form-container" id="form-2">
+        <div class="title">
+          <h1>Welcome to Hi Community</h1>
+          <h2>Register you account</h2>
+        </div>
+
+        <form name="signin" class="form">
+          {% csrf_token %}
+          {{ form }}
+          {{places_profile_form}}
+          <button type="button" id="btn-2" class="btn">Submit</button>
+        </form>
+      </div>
+    </div>
+
+    <script defer src="{% static 'js2/signInExtra.js' %}"></script>
+  </body>
+</html> {% endcomment %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Hi</title>
+    <link rel="stylesheet" href="{% static 'style/signing.css' %}" />
+
+    <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="image">
+        <img class="img" src="{% static 'assets/form-1.png' %}" alt="" />
+      </div>
+      <div class="form-container" id="form-2">
+        <div class="title">
+          <h1>Welcome to Hi Community</h1>
+          <h2>Register you account</h2>
+        </div>
+        <form method="POST" action="." name="signin" class="form" enctype="mutipart/form-data">
+          {% csrf_token %}
+          {{ form }}
+          {{places_profile_form}}
+          <button type="submit" class="btn">Continue</button>
+        </form>
+      </div>
+    <script defer src="{% static 'js2/signInExtra.js' %}"></script>
+  </body>
+</html> 

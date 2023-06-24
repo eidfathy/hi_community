@@ -1,14 +1,15 @@
 from django.urls import path
 
-from .import views
+from .views import community_profile, community, create_community
 app_name = 'community'
 
 urlpatterns = [
-    path('community/', views.community, name = 'community'),
+    path('community/', community, name = 'community'),
     
-    path('create_community/', views.create_community, name='create_community'),
+    path('create_community/', create_community, name='create-community'),
     
-    path('communityprofile/<int:community_id>/', views.community_profile, name='communityprofile'),
+    path('community/<uuid:community_id>/', community_profile, name='communityprofile'),
+    
     # {% url 'community:communityprofile' community_id=community.id %}
     
 ]

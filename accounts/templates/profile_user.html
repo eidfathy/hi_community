@@ -195,12 +195,12 @@
                             </div>
                         </div>
                         <div class="interst_wrapper d-flex gap-2 flex-wrap">
-                            {% for interest in interests %}
+                            {% for interest in profile.interest.all %}
                             <div class="interst red">
-                                {{ profile.interest }}
+                                {{ interest }}
                             </div>
                             {% endfor %}
-                            <div class="interst green">
+                            {% comment %} <div class="interst green">
                                 html
                             </div>
                             <div class="interst mov">
@@ -214,7 +214,7 @@
                             </div>
                             <div class="interst mov">
                                 React
-                            </div>
+                            </div> {% endcomment %}
                         </div>
                         </div>
                     </div>
@@ -288,7 +288,7 @@
                             </div>
                         </form>
                         <div class="posts_wrapper">
-                            {% for post in posts reversed  %}
+                            {% for post in postuser reversed  %}
                                 
                                     <div class="post bg-white rounded-3 mb-5">
                                         <div class="headPost d-flex justify-content-between">

@@ -58,6 +58,15 @@ class RegisterUserForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['username', 'email', 'first_name', 'last_name', 'password1', 'password2', 'role']
+        labels = {
+            "username": "",
+            "email":"",
+            "first_name":"",
+            "last_name":"",
+            "password1":"",
+            "password2":"",
+            "role":"",
+        }
 
 
 # class RegisterUserForm(UserCreationForm):
@@ -156,7 +165,20 @@ class UserProfileForm(forms.ModelForm):
 
     class Meta:
         model = UserProfile
-        fields = ["phone_number", "birth_day", "type", "address", "country", "area", "education", "job_tite", 'about_me',"interest"]
+        fields = [ "phone_number", "birth_day", "type", "address", "country", "area", "education", "job_tite", 'about_me',"interest"]
+        labels = {
+            "phone_number": "",
+            "birth_day":"",
+            "type":"",
+            "address":"",
+            "country":"",
+            "area":"",
+            "education":"",
+            "job_tite":"",
+            "about_me":"",
+            "interest":"",
+        }
+
 
 # class UserProfileForm(forms.ModelForm):
 #     class Meta:
@@ -170,14 +192,160 @@ class RegisterPlacesForm(UserCreationForm):
         ('places_profile', 'places_profile'),
     ]
     role = forms.ChoiceField(choices=CHOICES, initial='places_profile', widget=forms.HiddenInput())
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["username"].widget.attrs.update({
+            "required": "required",
+            "autofocus": "autofocus",
+            "class": "input",
+            "placeholder": "Username",
+            "type": "text",
+        })
+        self.fields["email"].widget.attrs.update({
+            "required": "required",
+            "class": "input",
+            "placeholder": "Email",
+            "type": "email",
+        })
+        self.fields["first_name"].widget.attrs.update({
+            "required": "required",
+            "class": "input",
+            "placeholder": "First Name",
+            "type": "text",
+        })
+        self.fields["last_name"].widget.attrs.update({
+            "required": "required",
+            "class": "input",
+            "placeholder": "Last Name",
+            "type": "text",
+        })
+        self.fields["password1"].widget.attrs.update({
+            "required": "required",
+            "class": "input",
+            "placeholder": "Password",
+            "type": "password",
+        })
+        self.fields["password2"].widget.attrs.update({
+            "required": "required",
+            "class": "input",
+            "placeholder": "Confirm Password",
+            "type": "password",
+        })
+
     class Meta:
         model = User
-        fields = ['username', 'email', 'password1', 'password2','role']
+        fields = ['username', 'email', 'first_name', 'last_name', 'password1', 'password2', 'role']
+        labels = {
+            "username": "",
+            "email":"",
+            "first_name":"",
+            "last_name":"",
+            "password1":"",
+            "password2":"",
+            "role":"",
+        }
 
 class PlacesProfileForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["nameplaces"].widget.attrs.update({
+            "required": "required",
+            "class": "input",
+            "name": "place name",
+            "id": "place name",
+            "placeholder": "Name of the place",
+            "type": "text",
+        })
+        self.fields["phone_number"].widget.attrs.update({
+            "required": "required",
+            "class": "input",
+            "name": "phone",
+            "id": "phone",
+            "placeholder": "Phone Number",
+            "type": "tel",
+        })
+        self.fields["type"].widget.attrs.update({
+            "required": "required",
+            "class": "input drop",
+            "name": "gender",
+            "id": "gender",
+            "placeholder": "Gender",
+            "type": "text",
+        })
+        self.fields["address"].widget.attrs.update({
+            "required": "required",
+            "class": "input",
+            "name": "address",
+            "id": "address",
+            "placeholder": "Address",
+            "type": "text",
+        })
+        self.fields["country"].widget.attrs.update({
+            "required": "required",
+            "class": "input",
+            "name": "country",
+            "id": "country",
+            "placeholder": "Country",
+            "type": "text",
+        })
+        self.fields["area"].widget.attrs.update({
+            "required": "required",
+            "class": "input",
+            "name": "area",
+            "id": "area",
+            "placeholder": "Area",
+            "type": "text",
+        })
+        self.fields["sarves"].widget.attrs.update({
+            "required": "required",
+            "class": "input",
+            "name": "sevices",
+            "id": "sevices",
+            "placeholder": "Services",
+            "type": "text",
+        })
+        self.fields["about_me"].widget.attrs.update({
+            "required": "required",
+            "class": "text-area input",
+            "name": "message",
+            "id": "message",
+            "rows":"5",
+            "placeholder": "About you",
+            "type": "text",
+        })
+        self.fields["facebook"].widget.attrs.update({
+            "required": "required",
+            "class": "input",
+            "name": "facebook",
+            "id": "facebook",
+            "placeholder": "Facebook Link",
+            "type": "text",
+        })
+        self.fields["instagram"].widget.attrs.update({
+            "required": "required",
+            "class": "input",
+            "name": "instagram",
+            "id": "instagram",
+            "placeholder": "Inistagram Link",
+            "type": "text",
+        })
+
     class Meta:
         model = PlacesProfile
         fields = ['nameplaces', 'phone_number', 'type', 'address', 'country', 'area', 'sarves', 'about_me','facebook', 'instagram']
+        labels = {
+            "nameplaces": "",
+            "phone_number":"",
+            "type":"",
+            "last_name":"",
+            "address":"",
+            "country":"",
+            "area":"",
+            "sarves":"",
+            "about_me":"",
+            "facebook":"",
+            "instagram":"",
+        }
 
 
 

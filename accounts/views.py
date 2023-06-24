@@ -13,6 +13,7 @@ from django.conf import settings
 from django.db.models.signals import post_save
 from django.contrib.auth import logout
 from posts.models import Post, PostPlaces
+from community.models import Community
 
 
 User = get_user_model()
@@ -99,8 +100,8 @@ def custom_login(request):
 def user_profile(request, profile_id):
     profile = get_object_or_404(UserProfile, id=profile_id, user=request.user)
     post_user_list = Post.objects.all()
-    # post_user = Post.objects.filter(creater=request.user)
-    context = {'profile':profile, 'posts':post_user_list,} 
+    post_user = Post.objects.filter(creater=profile)
+    context = {'profile':profile, 'posts':post_user_list, "postuser":post_user} 
     return render(request, 'profile_user.html', context)
 
 
@@ -108,7 +109,8 @@ def user_profile(request, profile_id):
 def places_profile(request, places_profile_id):
     places_profile = get_object_or_404(PlacesProfile, id=places_profile_id, user=request.user)
     post_places_list = PostPlaces.objects.all()
-    context = {'places_profile': places_profile, 'postsplaces': post_places_list}
+    post_community = PostPlaces.objects.filter(creater=places_profile)
+    context = {'places_profile': places_profile, 'postsplaces': post_places_list, "postcommunity":post_community}
     return render(request, 'profile_places.html', context)
 
 
@@ -136,8 +138,9 @@ def create_post(request):
 @login_required
 def home(request):
     profile = get_object_or_404(UserProfile, user=request.user)
-    post_list_all = list(Post.objects.all()) + list(PostPlaces.objects.all())
-    context = {'profile': profile, 'posts': post_list_all}
+    post_list_all = list(Post.objects.all()) + list(PostPlaces.objects.all()) 
+    community = Community.objects.filter(creator=profile)
+    context = {'profile': profile, 'posts': post_list_all, "community":community}
     return render(request, 'home.html', context)
 
 @login_required
