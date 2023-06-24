@@ -1050,6 +1050,10 @@ nav .search.profile {
   height: 0;
 }
 
+.row {
+  gap: 10em;
+}
+
 @media only screen and (max-width: 767px) {
   .chat-app .people-list {
     height: 465px;

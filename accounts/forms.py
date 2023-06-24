@@ -8,160 +8,160 @@ from posts.models import Post
 
 
 
-# class RegisterUserForm(UserCreationForm):
-#     CHOICES = [
-#         ('user_profile', 'user_profile'),
-#         ('places_profile', 'places_profile'),
-#     ]
-#     role = forms.ChoiceField(choices=CHOICES, initial='user_profile', widget=forms.HiddenInput())
-#     def __init__(self, *args, **kwargs) -> None:
-#         super().__init__( *args, **kwargs)
-#         self.fields["username"].widget.attrs.update({
-#             "required":"",
-#             "class": "input",
-#             "name": "username",
-#             "id":"username",
-#             "placeholder": "username",
-#             "type": "text",
-#         })
-#         self.fields["email"].widget.attrs.update({
-#             "required":"",
-#             "class": "input",
-#             "name": "email",
-#             "id":"email",
-#             "placeholder": "email",
-#             "type": "email",
-#         })
-#         self.fields["first_name"].widget.attrs.update({
-#             "required":"",
-#             "class": "input",
-#             "name": "first_name",
-#             "id":"first_name",
-#             "placeholder": "first name",
-#             "type": "text",
-#         })
-#         self.fields["last_name"].widget.attrs.update({
-#             "required":"",
-#             "class": "input",
-#             "name": "last_name",
-#             "id":"last_name",
-#             "placeholder": "last name",
-#             "type": "text",
-#         })
-#         self.fields["password1"].widget.attrs.update({
-#             "required":"",
-#             "class": "input",
-#             "name": "password",
-#             "id":"password",
-#             "placeholder": "password",
-#             "type": "password",
-#         })
-#         self.fields["password2"].widget.attrs.update({
-#             "required":"",
-#             "class": "input",
-#             "name": "password",
-#             "id":"password",
-#             "placeholder": "password",
-#             "type": "password",
-#         })
-
-#     class Meta:
-#         model = User
-#         fields = ['username', 'email','first_name','last_name', 'password1', 'password2','role']
-
 class RegisterUserForm(UserCreationForm):
     CHOICES = [
         ('user_profile', 'user_profile'),
         ('places_profile', 'places_profile'),
     ]
     role = forms.ChoiceField(choices=CHOICES, initial='user_profile', widget=forms.HiddenInput())
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["username"].widget.attrs.update({
+            "required": "required",
+            "autofocus": "autofocus",
+            "class": "input",
+            "placeholder": "Username",
+            "type": "text",
+        })
+        self.fields["email"].widget.attrs.update({
+            "required": "required",
+            "class": "input",
+            "placeholder": "Email",
+            "type": "email",
+        })
+        self.fields["first_name"].widget.attrs.update({
+            "required": "required",
+            "class": "input",
+            "placeholder": "First Name",
+            "type": "text",
+        })
+        self.fields["last_name"].widget.attrs.update({
+            "required": "required",
+            "class": "input",
+            "placeholder": "Last Name",
+            "type": "text",
+        })
+        self.fields["password1"].widget.attrs.update({
+            "required": "required",
+            "class": "input",
+            "placeholder": "Password",
+            "type": "password",
+        })
+        self.fields["password2"].widget.attrs.update({
+            "required": "required",
+            "class": "input",
+            "placeholder": "Confirm Password",
+            "type": "password",
+        })
+
     class Meta:
         model = User
-        fields = ['username', 'email','first_name','last_name', 'password1', 'password2','role']
+        fields = ['username', 'email', 'first_name', 'last_name', 'password1', 'password2', 'role']
+
+
+# class RegisterUserForm(UserCreationForm):
+#     CHOICES = [
+#         ('user_profile', 'user_profile'),
+#         ('places_profile', 'places_profile'),
+#     ]
+#     role = forms.ChoiceField(choices=CHOICES, initial='user_profile', widget=forms.HiddenInput())
+#     class Meta:
+#         model = User
+#         fields = ['username', 'email','first_name','last_name', 'password1', 'password2','role']
+
+class UserProfileForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["phone_number"].widget.attrs.update({
+            "required": "required",
+            "class": "input",
+            "name": "phone",
+            "id": "phone",
+            "placeholder": "Phone Number",
+            "type": "tel",
+        })
+        self.fields["birth_day"].widget.attrs.update({
+            "required": "required",
+            "class": "input",
+            "name": "date",
+            "id": "date",
+            "placeholder": "Date of Birth",
+            "type": "date",
+        })
+        self.fields["type"].widget.attrs.update({
+            "required": "required",
+            "class": "input drop",
+            "name": "gender",
+            "id": "gender",
+            "placeholder": "Gender",
+            "type": "text",
+        })
+        self.fields["address"].widget.attrs.update({
+            "required": "required",
+            "class": "input",
+            "name": "address",
+            "id": "address",
+            "placeholder": "Address",
+            "type": "text",
+        })
+        self.fields["country"].widget.attrs.update({
+            "required": "required",
+            "class": "input",
+            "name": "country",
+            "id": "country",
+            "placeholder": "Country",
+            "type": "text",
+        })
+        self.fields["area"].widget.attrs.update({
+            "required": "required",
+            "class": "input",
+            "name": "area",
+            "id": "area",
+            "placeholder": "Area",
+            "type": "text",
+        })
+        self.fields["education"].widget.attrs.update({
+            "required": "required",
+            "class": "input",
+            "name": "education",
+            "id": "education",
+            "placeholder": "Education",
+            "type": "text",
+        })
+        self.fields["job_tite"].widget.attrs.update({
+            "required": "required",
+            "class": "input",
+            "name": "job_tite",
+            "id": "job_tite",
+            "placeholder": "Job Title",
+            "type": "text",
+        })
+        self.fields["interest"].widget.attrs.update({
+            "required": "required",
+            "class": "input",
+            "name": "interest",
+            "id": "interest",
+            "placeholder": "Interest",
+            "type": "text",
+        })
+        self.fields["about_me"].widget.attrs.update({
+            "required": "required",
+            "class": "text-area input",
+            "name": "email",
+            "id": "email",
+            "placeholder": "About you",
+            "type": "text",
+        })
+
+    class Meta:
+        model = UserProfile
+        fields = ["phone_number", "birth_day", "type", "address", "country", "area", "education", "job_tite", 'about_me',"interest"]
 
 # class UserProfileForm(forms.ModelForm):
-#     def __init__(self, *args, **kwargs) -> None:
-#             super().__init__( *args, **kwargs)
-#             self.fields["phone_number"].widget.attrs.update({
-#                 "required":"",
-#                 "class": "input",
-#                 "name": "phone",
-#                 "id":"phone",
-#                 "placeholder": "phone number",
-#                 "type": "tel",
-#             })
-#             self.fields["birth_day"].widget.attrs.update({
-#                 "required":"",
-#                 "class": "input",
-#                 "name": "date",
-#                 "id":"date",
-#                 "placeholder": "Date of birth",
-#                 "type": "date",
-#             })
-#             self.fields["type"].widget.attrs.update({
-#                 "required":"",
-#                 "class": "input drop",
-#                 "name": "gender",
-#                 "id":"gender",
-#                 "placeholder": "gender",
-#                 "type": "text",
-#             })
-#             self.fields["address"].widget.attrs.update({
-#                 "required":"",
-#                 "class": "input",
-#                 "name": "address",
-#                 "id":"address",
-#                 "placeholder": "address",
-#                 "type": "text",
-#             })
-#             self.fields["country"].widget.attrs.update({
-#                 "required":"",
-#                 "class": "input",
-#                 "name": "country",
-#                 "id":"country",
-#                 "placeholder": "country",
-#                 "type": "text",
-#             })
-#             self.fields["area"].widget.attrs.update({
-#                 "required":"",
-#                 "class": "input",
-#                 "name": "area",
-#                 "id":"area",
-#                 "placeholder": "area",
-#                 "type": "text",
-#             })
-#             self.fields["education"].widget.attrs.update({
-#                 "required":"",
-#                 "class": "input",
-#                 "name": "education",
-#                 "id":"education",
-#                 "placeholder": "education",
-#                 "type": "text",
-#             })
-#             self.fields["job_tite"].widget.attrs.update({
-#                 "required":"",
-#                 "class": "input",
-#                 "name": "job_tite",
-#                 "id":"job_tite",
-#                 "placeholder": "job tite",
-#                 "type": "text",
-#             })
-#             self.fields["interest"].widget.attrs.update({
-#                 "required":"",
-#                 "class": "input",
-#                 "name": "interest",
-#                 "id":"interest",
-#                 "placeholder": "interest",
-#                 "type": "text",
-#             })
 #     class Meta:
 #         model = UserProfile
 #         fields = ['phone_number', 'birth_day', 'type', 'address', 'country', 'area', 'education', 'job_tite', 'about_me', 'interest']
-
-class UserProfileForm(forms.ModelForm):
-    class Meta:
-        model = UserProfile
-        fields = ['phone_number', 'birth_day', 'type', 'address', 'country', 'area', 'education', 'job_tite', 'about_me', 'interest']
 
 
 class RegisterPlacesForm(UserCreationForm):

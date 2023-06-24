@@ -1,24 +1,32 @@
-
-<!DOCTYPE html>
+{% load static %}
+{% comment %} <!DOCTYPE html>
 <html>
   <head>
     <title>تسجيل الدخول</title>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hi</title>
+    <link rel="stylesheet" href="{% static 'style/signing.css' %}" />
+
+    <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css"
+      rel="stylesheet"
+      type="text/css"
+    />
     <style>
-      /* تحديد نمط الحقول */
       .form-group {
         margin-bottom: 1rem;
       }
 
-      /* تحديد نمط التسمية */
       label {
         display: block;
         margin-bottom: 0.5rem;
         font-weight: bold;
       }
 
-      /* تحديد نمط حقل الإدخال */
       input {
         padding: 0.5rem;
         border: 1px solid #ccc;
@@ -27,7 +35,6 @@
         box-sizing: border-box;
       }
 
-      /* تحديد نمط زر الإرسال */
       button[type="submit"] {
         background-color: #4CAF50;
         border: none;
@@ -46,13 +53,11 @@
         background-color: #0069d9;
       }
 
-      /* تحديد نمط العنوان */
       h1 {
         text-align: center;
         margin-top: 2rem;
       }
 
-      /* تحديد نمط النموذج */
       form {
         max-width: 400px;
         margin: auto;
@@ -87,68 +92,271 @@
     <h1> Register User </h1>
     <form method="post">
       {% csrf_token %}
-      {{ form }}
-      {{user_profile_form}}
+      {{form.username}}
+      {{form.email}}
+      {{form.first_name}}
+      {{form.last_name}}
+      {{form.password1}}
+      {{form.password2}}
+
+      {{user_profile_form.phone_number}}
+      {{user_profile_form.birth_day}}
+      {{user_profile_form.type}}
+      {{user_profile_form.address}}
+      {{user_profile_form.country}}
+      {{user_profile_form.area}}
+      {{user_profile_form.education}}
+      {{user_profile_form.job_tite}}
+      {{user_profile_form.interest}}
       
       <button type="submit">Register</button>
     </form>
+    <script defer src="{% static 'js2/signInExtra.js' %}"></script>
   </body>
-</html>
-
-{% load static %}
+</html>  {% endcomment %}
 
 {% comment %} <!DOCTYPE html>
-<html lang="en">
-
-<head>
+<html>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=2.0"
+    />
     <title>Hi</title>
-    <link rel="stylesheet" href="{% static 'css/signing.css' %}" />
+    <link rel="stylesheet" href="{% static 'style/signing.css' %}" />
 
     <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
     <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
-</head>
-
-<body>
+    <link
+      href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+  <body>
     <div class="container">
-        <div class="form-container" id="form-2">
-            <div class="title" style="margin: 0;">
-                <h1>Welcome to Hi Community</h1>
-                <h2>Register you account</h2>
-            </div>
-            <form method="post">
-              {% csrf_token %}
-              {{form.username}}
-              {{form.email}}
-              {{form.first_name}}
-              {{form.last_name}}
-              {{form.password1}}
-              {{form.password2}}
+      <div class="image">
+        <img class="img" src="{% static 'assets/form-1.png' %}" alt="" />
+      </div>
+    <div class="form-container">
+        <div class="title">
+          <h1>Welcome to Hi Community</h1>
+          <h2>Register you account</h2>
+        </div>
+      <form method="post">
+        {% csrf_token %}
+        {{ form }}
+        {{user_profile_form}}
+        
+        <button type="submit">Register</button>
+      </form>
+    </div>
+  </body>
+</html>  {% endcomment %}
 
-              {{user_profile_form.phone_number}}
-              {{user_profile_form.birth_day}}
-              {{user_profile_form.type}}
-              {{user_profile_form.address}}
-              {{user_profile_form.country}}
-              {{user_profile_form.area}}
-              {{user_profile_form.education}}
-              {{user_profile_form.job_tite}}
-              {{user_profile_form.interest}}
-              
-              <button type="submit">Register</button>
-            </form>
-            <hr />
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Hi</title>
+    <link rel="stylesheet" href="{% static 'style/signing.css' %}" />
+
+    <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="image">
+        <img class="img" src="{% static 'assets/form-1.png' %}" alt="" />
+      </div>
+      <div class="form-container" id="form-2">
+        <div class="title">
+          <h1>Welcome to Hi Community</h1>
+          <h2>Register you account</h2>
         </div>
-        <div class="image">
-            <img class="img" src="{% static 'img/form-2.png' %}" alt="" />
+        <form method="POST" action="." name="signin" class="form" enctype="mutipart/form-data">
+          {% csrf_token %}
+            {{ form }}
+            {{user_profile_form}}
+          <button type="submit" class="btn">Continue</button>
+        </form>
+      </div>
+    <script defer src="{% static 'js2/signInExtra.js' %}"></script>
+  </body>
+</html> {% endcomment %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Hi</title>
+    <link rel="stylesheet" href="{% static 'style/signing.css' %}" />
+
+    <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="image">
+        <img class="img" src="{% static 'assets/form-1.png' %}" alt="" />
+      </div>
+
+      <div class="form-container" id="form-2">
+        <div class="title">
+          <h1>Welcome to Hi Community</h1>
+          <h2>Register you account</h2>
         </div>
+
+        <form name="signin" class="form">
+          <input
+            type="text"
+            name="username"
+            id="username"
+            class="input"
+            placeholder="Username"
+            autofocus
+            required
+          />
+
+          <input
+            type="email"
+            name="email"
+            id="email"
+            class="input"
+            placeholder="Email"
+            required
+          />
+          <input
+            type="text"
+            name="first-name"
+            id="firstName"
+            class="input"
+            placeholder="First Name"
+            required
+          />
+          <input
+            type="text"
+            name="last-name"
+            id="lasttName"
+            class="input"
+            placeholder="Last Name"
+            required
+          />
+
+          <input
+            type="password"
+            name="password"
+            id="password"
+            class="input"
+            placeholder="Password"
+            required
+          />
+
+          <input
+            type="tel"
+            name="phone"
+            id="phone"
+            class="input"
+            placeholder="Phone"
+            autofocus
+            required
+          />
+
+          <input
+            type="date"
+            name="date"
+            id="date"
+            class="input"
+            placeholder="Date of birth"
+            required
+          />
+
+          <select name="gender" class="input drop" required>
+            <option value="gender">gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+
+          <select id="country" name="country" class="input drop">
+            <option value="Egypt">Egypt</option>
+          </select>
+
+          <input
+            type="text"
+            name="area"
+            id="area"
+            class="input"
+            placeholder="Area"
+            required
+          />
+
+          <input
+            type="text"
+            name="education"
+            id="education"
+            class="input"
+            placeholder="Education"
+            required
+          />
+          <input
+            type="text"
+            name="job"
+            id="job"
+            class="input"
+            placeholder="Job Title"
+            required
+          />
+
+          <textarea
+            name="message"
+            id="message"
+            rows="5"
+            class="text-area input"
+            placeholder="About you"
+            name="email"
+            id="email"
+            required
+          ></textarea>
+
+          <input
+            class="input tags tagify--hasMaxTags"
+            name="basic"
+            value=""
+            placeholder="Enter your hobbis or intersts"
+          />
+
+          <button type="button" id="btn-2" class="btn">Submit</button>
+        </form>
+      </div>
     </div>
 
-    <script src="{% static 'js/main.js' %}"></script>
-    <script src="{% static 'js/signing.js' %}"></script>
-</body>
+    <script defer src="{% static 'js2/signInExtra.js' %}"></script>
+  </body>
+</html>
 
-</html> {% endcomment %}
+
+

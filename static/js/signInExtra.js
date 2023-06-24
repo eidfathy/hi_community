@@ -10,7 +10,6 @@ window.addEventListener('resize', () => {
   document.documentElement.style.setProperty('--vh', `${vh}px`);
 });
 
-const registerBtn = document.querySelector('.register');
 const container = document.querySelector('.container');
 const formChoice = document.querySelector('#form-choice');
 const form1 = document.querySelector('#form-1');
@@ -22,15 +21,6 @@ const btn3 = document.querySelector('#btn-3');
 const userBtn = document.querySelector('#user');
 const placesBtn = document.querySelector('#places');
 const image = document.querySelector('.img');
-
-registerBtn.addEventListener('click', (e) => {
-  e.preventDefault();
-
-  image.src = './assets/form-5.png';
-  container.classList.toggle('reverse');
-  form1.style.display = 'none';
-  formChoice.style.display = 'flex';
-});
 
 // userBtn.addEventListener('click', (e) => {
 //   e.preventDefault();

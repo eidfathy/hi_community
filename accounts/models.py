@@ -28,15 +28,15 @@ class User(AbstractUser):
 from django.utils.text import slugify
 
 class InterestUser(models.Model):
-	title = models.CharField(max_length=75, verbose_name='interest')
+	title = models.CharField(max_length=75, verbose_name='interest_user')
 	slug = models.SlugField(null=False, unique=True)
 
 	class Meta:
-		verbose_name='interest'
-		verbose_name_plural = 'interests'
+		verbose_name='interest_user'
+		verbose_name_plural = 'interest_user'
 
 	def get_absolute_url(self):
-		return reverse('interests', args=[self.slug])
+		return reverse('interest_user', args=[self.slug])
 		
 	def __str__(self):
 		return self.title
@@ -47,15 +47,15 @@ class InterestUser(models.Model):
 		return super().save(*args, **kwargs)
 
 class InterestPlaces(models.Model):
-	title = models.CharField(max_length=75, verbose_name='interest')
+	title = models.CharField(max_length=75, verbose_name='interest_places')
 	slug = models.SlugField(null=False, unique=True)
 
 	class Meta:
-		verbose_name='interest'
-		verbose_name_plural = 'interests'
+		verbose_name='interest_places'
+		verbose_name_plural = 'interest_places'
 
 	def get_absolute_url(self):
-		return reverse('interests', args=[self.slug])
+		return reverse('interest_places', args=[self.slug])
 		
 	def __str__(self):
 		return self.title
@@ -79,7 +79,7 @@ def image_user(instance, filename):
 class UserProfile(models.Model):  
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     
-    image = models.ImageField(upload_to=image_user, null=True)
+    image = models.ImageField(upload_to=image_user, blank = True, null = True)
     phone_number = models.CharField(max_length=15,)
     birth_day = models.DateField(auto_now_add=False, null=True)
     type = models.CharField(max_length=7, choices=GENDER_CHOICES)
@@ -103,7 +103,7 @@ def image_places(instance,filename):
 class PlacesProfile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     
-    image = models.ImageField(upload_to=image_places, null=True)
+    image = models.ImageField(upload_to=image_places, blank = True, null = True)
     nameplaces = models.CharField(max_length=100)
     phone_number = models.CharField(max_length=15,)
     type = models.CharField(max_length=7, choices=GENDER_CHOICES)

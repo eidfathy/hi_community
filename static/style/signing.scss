@@ -1,32 +1,15 @@
 @import 'primary.css';
 
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--bg-color);
-  // height: calc(var(--vh, 1vh) * 100);
-  height: 100vh;
-}
-
 .container {
-  position: relative;
-  padding: 0 1em;
+  padding: 1em;
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  align-items: center;
-  transition: all 0.3s linear;
-  width: 100%;
-  height: 100%;
 
   .image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin-top: 0.5em;
     height: 100%;
-
     img {
+      position: fixed;
       // padding: 1em;
       max-height: 95vh;
     }
@@ -172,6 +155,8 @@ body {
     width: 100%;
     gap: 1em;
     .btn-cta-choice {
+      width: 100%;
+      text-align: center;
       cursor: pointer;
       color: var(--text-color);
       font-size: 1.5em;

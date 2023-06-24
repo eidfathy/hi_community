@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <link rel="stylesheet" href="{% static 'css/community.css' %}" />
-    <title>MI Community</title>
+    <title>HI Community</title>
   </head>
   <body>
     <nav class="navbar">
@@ -47,7 +47,7 @@
                       <img src="{% static 'img/Group 2984.png' %}" alt="" class="img-fluid" />
                     </div>
                     <div class="info">
-                      <h4> Youssif Elhelaly, <span>added 26 new photos</span>
+                      <h4> Eid Fathy, <span>added 26 new photos</span>
                       </h4>
                       <p>14 min</p>
                     </div>
@@ -106,7 +106,7 @@
                 </div>
                 <div class="down">
                   <li>
-                    <a href="#" class="leftSideOption">
+                    <a href="{% url 'accounts:logout' %}" class="leftSideOption">
                       <img src="{% static 'img/logOut.png' %}" alt="" />
                       <span>logout</span>
                     </a>
@@ -128,7 +128,7 @@
                   <p class="community-brief">{{ community.description }}</p>
                 </div>
                 <div class="btn">
-                  <a href="#">Join request</a>
+                  <a href="">Join request</a>
                 </div>
               </div> {% endfor %} </div>
           </div>
@@ -143,39 +143,19 @@
                   <button>search</button>
                 </form>
               </div>
+
               <div class="myCommunity_wrapper bg-white rounded-3 pb-3 mt-4">
                 <h4 class="p-3">My Community</h4>
-                <div class="community d-flex align-items-center gap-3 m-2">
-                  <div class="img">
-                    <img src="{% static 'img/logoFigma.png' %}" alt="" class="img-fluid" />
+                {% for community in mycommunity reversed  %}
+                  <div class="community d-flex align-items-center gap-3 m-2">
+                    <div class="img">
+                      <img src="{{ community.image.url }}" alt="" class="img-fluid" />
+                    </div>
+                    <h5>{{community.name_community}}</h5>
                   </div>
-                  <h5>Figma Design Community</h5>
-                </div>
-                <div class="community d-flex align-items-center gap-3 m-2">
-                  <div class="img">
-                    <img src="{% static 'img/logoFigma.png' %}" alt="" class="img-fluid" />
-                  </div>
-                  <h5>Figma Design Community</h5>
-                </div>
-                <div class="community d-flex align-items-center gap-3 m-2">
-                  <div class="img">
-                    <img src="{% static 'img/logoFigma.png' %}" alt="" class="img-fluid" />
-                  </div>
-                  <h5>Figma Design Community</h5>
-                </div>
-                <div class="community d-flex align-items-center gap-3 m-2">
-                  <div class="img">
-                    <img src="{% static 'img/logoFigma.png' %}" alt="" class="img-fluid" />
-                  </div>
-                  <h5>Figma Design Community</h5>
-                </div>
-                <div class="community d-flex align-items-center gap-3 m-2">
-                  <div class="img">
-                    <img src="{% static 'img/logoFigma.png' %}" alt="" class="img-fluid" />
-                  </div>
-                  <h5>Figma Design Community</h5>
-                </div>
+                {% endfor %} 
               </div>
+
               <button class="btn-create">Create a community</button>
             </div>
           </div>

@@ -26,7 +26,7 @@ def register(request):
 def registeruser(request):
     if request.method == 'POST':
         form = RegisterUserForm(request.POST)
-        user_profile_form = UserProfileForm(request.POST)
+        user_profile_form = UserProfileForm(request.POST , request.FILES)
         if form.is_valid() and user_profile_form.is_valid():
             user = form.save(commit=False)
             user.set_password(form.cleaned_data['password1']) 
@@ -45,13 +45,11 @@ def registeruser(request):
         user_profile_form = UserProfileForm()
     return render(request, 'registeruser.html', {'form': form, 'user_profile_form' : user_profile_form})
 
-# def registeruser2(request):
-#     return render(request, 'registeruser2.html', {})
 
 def registerplaces(request):
     if request.method == 'POST':
         form = RegisterPlacesForm(request.POST)
-        places_profile_form = PlacesProfileForm(request.POST)
+        places_profile_form = PlacesProfileForm(request.POST , request.FILES)
         if form.is_valid() and places_profile_form.is_valid():
             user = form.save(commit=False)
             user.set_password(form.cleaned_data['password1']) 
@@ -69,7 +67,6 @@ def registerplaces(request):
         form = RegisterPlacesForm()
         places_profile_form = PlacesProfileForm()
     return render(request, 'registerplaces.html', {'form': form, 'places_profile_form': places_profile_form})
-
 
 
 def custom_login(request):
@@ -102,7 +99,8 @@ def custom_login(request):
 def user_profile(request, profile_id):
     profile = get_object_or_404(UserProfile, id=profile_id, user=request.user)
     post_user_list = Post.objects.all()
-    context = {'profile':profile, 'posts':post_user_list} # tempate name
+    # post_user = Post.objects.filter(creater=request.user)
+    context = {'profile':profile, 'posts':post_user_list,} 
     return render(request, 'profile_user.html', context)
 
 
@@ -117,7 +115,6 @@ def places_profile(request, places_profile_id):
 def logout_view(request):
     logout(request)
     return redirect('accounts:login')  
-
 
 @login_required
 def create_post(request):
@@ -150,4 +147,5 @@ def homeplaces(request):
     context = {'places_profile': places_profile, 'postsplaces': post_places_list}
     return render(request, 'homeplaces.html', context)
 
-
+# def registeruser2(request):
+#     return render(request, 'registeruser2.html', {})
